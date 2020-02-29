@@ -36,7 +36,7 @@ class Point {
 
     angleTo(point) {
         var r = Math.atan2(point.Y - this.Y, point.X - this.X);
-        var d = radians * (180/Math.PI);
+        var d = r * (180/Math.PI);
         return {radians: r, degrees: d};
     }
 
