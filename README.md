@@ -23,7 +23,7 @@ var b = new Rectangle(5, 5, 10, 8);
 console.log(b.isInside(a));
 ```
 
-Determine if a two circles intersect
+Determine if two circles intersect
 ```javascript
 var a = new Circle(-20, -20, 40);
 var b = new Circle(50, 50, 90);
