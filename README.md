@@ -1,6 +1,11 @@
 # drawing.js
 Some useful structures for graphics programming in JavaScript I guess...
 
+### To-do
+- Point3D
+- Cube
+- Sphere
+
 ### Some examples
 Get angle between two points in degrees
 ```javascript
