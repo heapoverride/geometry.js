@@ -1,14 +1,14 @@
 # drawing.js
 Some useful structures for graphics programming in JavaScript I guess...
 
-### To-do
-[checkbox:checked] Point
-[checkbox:checked] Size
-[checkbox:checked] Rectangle
-[checkbox:checked] Circle
-[checkbox:unchecked] Point3D
-[checkbox:unchecked] Cube
-[checkbox:unchecked] Sphere
+### Structures included
+- [x] Point
+- [x] Size
+- [x] Rectangle
+- [x] Circle
+- [ ] Point3D
+- [ ] Cube
+- [ ] Sphere
 
 ### Some examples
 Get angle between two points in degrees
