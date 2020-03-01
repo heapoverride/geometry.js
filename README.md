@@ -7,6 +7,7 @@ Some useful structures for graphics programming in JavaScript I guess...
 - [x] Rectangle
 - [x] Circle
 - [x] Point3D
+- [x] Size3D
 - [x] Cube
 - [ ] Sphere
 
