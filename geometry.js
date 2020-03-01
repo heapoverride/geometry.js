@@ -95,6 +95,7 @@ class Circle {
 
     get X() { return this.point.X; } set X(x) { this.point.X = x; }
     get Y() { return this.point.Y; } set Y(y) { this.point.Y = y; }
+    get Point() { return this.point; } set Point(point) { this.point = point; }
     get Radius() { return this.radius; } set Radius(r) { this.radius = r; }
 
     distanceTo(circle) {
@@ -225,6 +226,7 @@ class Sphere {
     get X() { return this.point.X; } set X(x) { this.point.X = x; }
     get Y() { return this.point.Y; } set Y(y) { this.point.Y = y; }
     get Z() { return this.point.Z; } set Z(z) { this.point.Z = z; }
+    get Point3D() { return this.point; } set Point3D(point) { this.point = point; }
     get Radius() { return this.radius; } set Radius(r) { this.radius = r; }
 
     distanceTo(sphere) {
