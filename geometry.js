@@ -76,8 +76,8 @@ class Rectangle {
         var a = this;
         var b = rect;
 
-        if ((a.Y > b.Y && a.Y+a.Height < b.Y+b.Height) &&
-            (a.X > b.X && a.X+a.Width < b.X+b.Width)) {
+        if ((a.Y >= b.Y && a.Y+a.Height <= b.Y+b.Height) &&
+            (a.X >= b.X && a.X+a.Width <= b.X+b.Width)) {
             return true;
         }
 
@@ -108,7 +108,7 @@ class Circle {
 
     isInside(circle) {
         var distance = this.distanceTo(circle);
-        if (distance+this.Radius < circle.Radius) {
+        if (distance+this.Radius <= circle.Radius) {
             return true;
         }
         return false;
@@ -214,4 +214,46 @@ class Cube {
     }
 }
 
-if (typeof(module)!='undefined') module.exports = { Size, Point, Rectangle, Circle, Point3D, Size3D, Cube };
+class Sphere {
+    point = null; radius = 0;
+
+    constructor(point, radius=0) {
+        this.point = point;
+        this.radius = radius;
+    }
+
+    get X() { return this.point.X; } set X(x) { this.point.X = x; }
+    get Y() { return this.point.Y; } set Y(y) { this.point.Y = y; }
+    get Z() { return this.point.Z; } set Z(z) { this.point.Z = z; }
+    get Radius() { return this.radius; } set Radius(r) { this.radius = r; }
+
+    distanceTo(sphere) {
+        var a = this;
+        var b = sphere;
+
+        var distance = Math.sqrt(Math.pow(b.X-a.X, 2) + Math.pow(b.Y-a.Y, 2) + Math.pow(b.Z-a.Z, 2));
+        
+        return distance;
+    }
+
+    isInside(sphere) {
+        var distance = this.distanceTo(sphere);
+        if (distance+this.Radius <= sphere.Radius) {
+            return true;
+        }
+        return false;
+    }
+
+    intersectsWith(sphere) {
+        var distance = this.distanceTo(sphere);
+        var radius_sum = this.Radius+sphere.Radius;
+
+        if (radius_sum > distance) {
+            return true;
+        }
+
+        return false;
+    }
+}
+
+if (typeof(module)!='undefined') module.exports = { Size, Point, Rectangle, Circle, Point3D, Size3D, Cube, Sphere };
