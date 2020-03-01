@@ -73,8 +73,8 @@ class Rectangle {
     }
 
     isInside(rect) {
-        var a = this;
-        var b = rect;
+        var a = rect;
+        var b = this;
 
         if ((a.Y >= b.Y && a.Y+a.Height <= b.Y+b.Height) &&
             (a.X >= b.X && a.X+a.Width <= b.X+b.Width)) {
