@@ -40,6 +40,18 @@ class Point {
         return {radians: r, degrees: d};
     }
 
+    isInside(object) {
+        var a = this;
+        var b = object;
+
+        if ((a.X >= b.X && a.X <= b.X+b.Width) &&
+            (a.Y >= b.Y && a.Y <= b.Y+b.Height)) {
+            return true;
+        }
+
+        return false;
+    }
+
     copy() { return Object.assign(new Point(), this); }
 }
 
@@ -62,10 +74,10 @@ class Rectangle {
         var a = this;
         var b = rect;
 
-        if (((a.Y >= b.Y && a.Y <= b.Y+b.Height) || 
-            (b.Y >= a.Y && b.Y <= a.Y+a.Height)) && 
-            ((a.X >= b.X && a.X <= b.X+b.Width) || 
-            (b.X >= a.X && b.X <= a.X+a.Width))) {
+        if (((a.X >= b.X && a.X <= b.X+b.Width) || 
+            (b.X >= a.X && b.X <= a.X+a.Width)) &&
+            ((a.Y >= b.Y && a.Y <= b.Y+b.Height) || 
+            (b.Y >= a.Y && b.Y <= a.Y+a.Height))) {
             return true;
         }
 
@@ -165,6 +177,19 @@ class Point3D {
         return distance;
     }
 
+    isInside(object) {
+        var a = this;
+        var b = object;
+
+        if ((a.X >= b.X && a.X <= b.X+b.Width) &&
+            (a.Y >= b.Y && a.Y <= b.Y+b.Height) &&
+            (a.Z >= b.Z && a.Z <= b.Z+b.Width)) {
+            return true;
+        }
+
+        return false;
+    }
+
     copy() { return Object.assign(new Point3D(), this); }
 }
 
@@ -189,10 +214,10 @@ class Cube {
         var a = this;
         var b = cube;
 
-        if (((a.Y >= b.Y && a.Y <= b.Y+b.Height) || 
-            (b.Y >= a.Y && b.Y <= a.Y+a.Height)) && 
-            ((a.X >= b.X && a.X <= b.X+b.Width) || 
+        if (((a.X >= b.X && a.X <= b.X+b.Width) || 
             (b.X >= a.X && b.X <= a.X+a.Width)) &&
+            ((a.Y >= b.Y && a.Y <= b.Y+b.Height) || 
+            (b.Y >= a.Y && b.Y <= a.Y+a.Height)) &&
             ((a.Z >= b.Z && a.Z <= b.Z+b.Depth) || 
             (b.Z >= a.Z && b.Z <= a.Z+a.Depth))) {
             return true;
@@ -205,8 +230,8 @@ class Cube {
         var a = this;
         var b = cube;
 
-        if ((a.Y > b.Y && a.Y+a.Height < b.Y+b.Height) &&
-            (a.X > b.X && a.X+a.Width < b.X+b.Width) &&
+        if ((a.X > b.X && a.X+a.Width < b.X+b.Width) &&
+            (a.Y > b.Y && a.Y+a.Height < b.Y+b.Height) &&
             (a.Z > b.Z && a.Z+a.Depth < b.Z+b.Depth)) {
             return true;
         }
