@@ -4,7 +4,7 @@ Some useful structures for graphics programming in JavaScript I guess...
 ### Structures included
 - [x] **Point** `(x, y)`
 - [x] **Size** `(width, height)`
-- [x] **Rectangle** `(point, size)`
+- [x] **Rectangle** `(Point, Size)`
 - [x] **Circle** `(Point, radius)`
 - [x] **Point3D** `(x, y, z)`
 - [x] **Size3D** `(width, height, depth)`
