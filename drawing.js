@@ -65,9 +65,7 @@ class Rectangle {
         if (((a.Y >= b.Y && a.Y <= b.Y+b.Height) || 
             (b.Y >= a.Y && b.Y <= a.Y+a.Height)) && 
             ((a.X >= b.X && a.X <= b.X+b.Width) || 
-            (b.X >= a.X && b.X <= a.X+a.Width)) &&
-            ((a.Z >= b.Z && a.Z <= b.Z+b.Depth) || 
-            (b.Z >= a.Z && b.Z <= a.Z+a.Depth))) {
+            (b.X >= a.X && b.X <= a.X+a.Width))) {
             return true;
         }
 
@@ -193,7 +191,9 @@ class Cube {
         if (((a.Y >= b.Y && a.Y <= b.Y+b.Height) || 
             (b.Y >= a.Y && b.Y <= a.Y+a.Height)) && 
             ((a.X >= b.X && a.X <= b.X+b.Width) || 
-            (b.X >= a.X && b.X <= a.X+a.Width))) {
+            (b.X >= a.X && b.X <= a.X+a.Width)) &&
+            ((a.Z >= b.Z && a.Z <= b.Z+b.Depth) || 
+            (b.Z >= a.Z && b.Z <= a.Z+a.Depth))) {
             return true;
         }
 
