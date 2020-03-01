@@ -6,8 +6,8 @@ Some useful structures for graphics programming in JavaScript I guess...
 - [x] Size
 - [x] Rectangle
 - [x] Circle
-- [ ] Point3D
-- [ ] Cube
+- [x] Point3D
+- [x] Cube
 - [ ] Sphere
 
 ### Some examples
@@ -27,14 +27,28 @@ console.log(a.distanceTo(b));
 
 Determine if a rectangle is completely inside another rectangle
 ```javascript
-var a = new Rectangle(0, 0, 20, 15);
-var b = new Rectangle(5, 5, 10, 8);
+var a = new Rectangle(new Point(0, 0), new Size(20, 15));
+var b = new Rectangle(new Point(5, 5), new Size(10, 8));
 console.log(b.isInside(a));
 ```
 
 Determine if two circles intersect
 ```javascript
-var a = new Circle(-20, -20, 40);
-var b = new Circle(50, 50, 90);
+var a = new Circle(new Point(-20, -20), 40);
+var b = new Circle(new Point(50, 50), 90);
 console.log(b.intersectsWith(a));
+```
+
+Determine if two cubes intersect
+```javascript
+var a = new Cube(new Point3D(0, 0, 0), new Size3D(200, 50, 50));
+var b = new Cube(new Point3D(100, 0, 0), new Size3D(200, 50, 50));
+console.log(a.intersectsWith(b));
+```
+
+Get distance between two points in 3d space
+```javascript
+var a = new Point3D(0, 0, 0);
+var b = new Point3D(100, 100, 100);
+console.log(a.distanceTo(b));
 ```
