@@ -38,6 +38,7 @@ class Point {
     /**
     * Get distance between this Point and another Point
     * @param {Point} point
+    * @returns {number}
     */
     distanceTo(point) {
         var a = this;
@@ -51,6 +52,7 @@ class Point {
     /**
     * Get angle between this Point and another Point in radians and degrees
     * @param {Point} point
+    * @returns {object}
     */
     angleTo(point) {
         var r = Math.atan2(point.Y - this.Y, point.X - this.X);
@@ -61,6 +63,7 @@ class Point {
     /**
     * Test if this Point is inside a Rectangle
     * @param {Rectangle} rect
+    * @returns {boolean}
     */
     isInside(rect) {
         var a = this;
@@ -100,6 +103,7 @@ class Rectangle {
     /**
     * Test if this Rectangle intersects with another Rectangle
     * @param {Rectangle} rect
+    * @returns {boolean}
     */
     intersectsWith(rect) {
         var a = this;
@@ -118,6 +122,7 @@ class Rectangle {
     /**
     * Test if this Rectangle is inside another Rectangle
     * @param {Rectangle} rect
+    * @returns {boolean}
     */
     isInside(rect) {
         var a = rect;
@@ -153,6 +158,7 @@ class Circle {
     /**
     * Get distance from this Circle's center point to another Circle's center point
     * @param {Circle} circle
+    * @returns {number}
     */
     distanceTo(circle) {
         var a = this;
@@ -166,6 +172,7 @@ class Circle {
     /**
     * Test if this Circle is inside another Circle
     * @param {Circle} circle
+    * @returns {boolean}
     */
     isInside(circle) {
         var distance = this.distanceTo(circle);
@@ -178,6 +185,7 @@ class Circle {
     /**
     * Test if this Circle intersects with another Circle
     * @param {Circle} circle
+    * @returns {boolean}
     */
     intersectsWith(circle) {
         var distance = this.distanceTo(circle);
@@ -235,6 +243,7 @@ class Point3D {
     /**
     * Get distance between this Point3D and another Point3D
     * @param {Point3D} point
+    * @returns {number}
     */
     distanceTo(point) {
         var a = this;
@@ -248,6 +257,7 @@ class Point3D {
     /**
     * Test if this Point3D is inside a Cube
     * @param {Cube} cube
+    * @returns {boolean}
     */
     isInside(cube) {
         var a = this;
@@ -290,6 +300,7 @@ class Cube {
     /**
     * Test if this Cube intersects with another Cube
     * @param {Cube} cube
+    * @returns {boolean}
     */
     intersectsWith(cube) {
         var a = this;
@@ -310,6 +321,7 @@ class Cube {
     /**
     * Test if this Cube is inside another Cube
     * @param {Cube} cube
+    * @returns {boolean}
     */
     isInside(cube) {
         var a = this;
@@ -347,6 +359,7 @@ class Sphere {
     /**
     * Get distance from this Sphere's center point to another Sphere's center point
     * @param {Sphere} sphere
+    * @returns {number}
     */
     distanceTo(sphere) {
         var a = this;
@@ -360,6 +373,7 @@ class Sphere {
     /**
     * Test if this Sphere is inside another Sphere
     * @param {Sphere} sphere
+    * @returns {boolean}
     */
     isInside(sphere) {
         var distance = this.distanceTo(sphere);
@@ -372,6 +386,7 @@ class Sphere {
     /**
     * Test if this Sphere intersects with another Sphere
     * @param {Sphere} sphere
+    * @returns {boolean}
     */
     intersectsWith(sphere) {
         var distance = this.distanceTo(sphere);
@@ -404,6 +419,7 @@ class Line {
 
     /**
     * Get Line's length (distance between point A and B)
+    * @returns {number}
     */
     length() {
         return this.point_a.distanceTo(this.point_b);
@@ -411,6 +427,7 @@ class Line {
 
     /**
     * Get angle between Line's two points in radians and degrees
+    * @returns {object}
     */
     angle() {
         return this.point_a.angleTo(this.point_b);
@@ -436,6 +453,7 @@ class Line3D {
 
     /**
     * Get Line's length (distance between point A and B)
+    * @returns {number}
     */
     length() {
         return this.point_a.distanceTo(this.point_b);
