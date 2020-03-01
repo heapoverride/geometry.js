@@ -11,6 +11,11 @@ Some useful structures for graphics programming in JavaScript I guess...
 - [x] **Cube** `(Point3D, Size3D)`
 - [x] **Sphere** `(Point3D, radius)`
 
+### NodeJS require all
+```javascript
+const { Size, Point, Rectangle, Circle, Point3D, Size3D, Cube, Sphere } = require('../geometry.js');
+```
+
 ### Some examples
 Get angle between two points in degrees
 ```javascript
