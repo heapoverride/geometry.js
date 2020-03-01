@@ -40,9 +40,9 @@ class Point {
         return {radians: r, degrees: d};
     }
 
-    isInside(object) {
+    isInside(rect) {
         var a = this;
-        var b = object;
+        var b = rect;
 
         if ((a.X >= b.X && a.X <= b.X+b.Width) &&
             (a.Y >= b.Y && a.Y <= b.Y+b.Height)) {
@@ -177,9 +177,9 @@ class Point3D {
         return distance;
     }
 
-    isInside(object) {
+    isInside(cube) {
         var a = this;
-        var b = object;
+        var b = cube;
 
         if ((a.X >= b.X && a.X <= b.X+b.Width) &&
             (a.Y >= b.Y && a.Y <= b.Y+b.Height) &&
