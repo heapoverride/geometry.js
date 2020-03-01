@@ -413,7 +413,7 @@ class Line {
     * Get angle between Line's two points in radians and degrees
     */
     angle() {
-        return this.point_a.angleTo(point_b);
+        return this.point_a.angleTo(this.point_b);
     }
 }
 
