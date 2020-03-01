@@ -9,7 +9,7 @@ Some useful structures for graphics programming in JavaScript I guess...
 - [x] **Point3D** `(x, y, z)`
 - [x] **Size3D** `(width, height, depth)`
 - [x] **Cube** `(Point3D, Size3D)`
-- [ ] **Sphere** 
+- [x] **Sphere** `(Point3D, radius)`
 
 ### Some examples
 Get angle between two points in degrees
@@ -52,4 +52,20 @@ Get distance between two points in 3d space
 var a = new Point3D(0, 0, 0);
 var b = new Point3D(100, 100, 100);
 console.log(a.distanceTo(b));
+```
+
+
+
+Determine if two spheres intersect
+```javascript
+var a = new Sphere(new Point3D(0, 0, 0), 300);
+var b = new Sphere(new Point3D(200, 0, 0), 300);
+console.log(a.intersectsWith(b));
+```
+
+Determine if a sphere is completely inside another sphere
+```javascript
+var a = new Sphere(new Point3D(0, 0, 0), 300);
+var b = new Sphere(new Point3D(30, 30, 0), 190);
+console.log(b.isInside(a));
 ```
