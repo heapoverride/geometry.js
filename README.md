@@ -10,8 +10,8 @@ Some useful structures for graphics programming in JavaScript I guess...
 - [x] **Size3D** `(width, height, depth)`
 - [x] **Cube** `(Point3D, Size3D)`
 - [x] **Sphere** `(Point3D, radius)`
-- [ ] **Line** `(Point, Point)`
-- [ ] **Line3D** `(Point3D, Point3D)`
+- [x] **Line** `(Point, Point)`
+- [x] **Line3D** `(Point3D, Point3D)`
 
 ### NodeJS require all
 ```javascript
