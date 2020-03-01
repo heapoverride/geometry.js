@@ -76,3 +76,10 @@ var a = new Sphere(new Point3D(0, 0, 0), 300);
 var b = new Sphere(new Point3D(30, 30, 0), 190);
 console.log(b.isInside(a));
 ```
+
+Get line's length and angle between it's two points in radians
+```javascript
+var line = new Line(new Point(0, 0), new Point(100, 100));
+console.log(line.length());
+console.log(line.angle().radians);
+```
