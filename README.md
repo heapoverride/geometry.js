@@ -2,14 +2,14 @@
 Some useful structures for graphics programming in JavaScript I guess...
 
 ### Structures included
-- [x] Point `(x, y)`
-- [x] Size `(width, height)`
-- [x] Rectangle `(point, size)`
-- [x] Circle `(Point, radius)`
-- [x] Point3D `(x, y, z)`
-- [x] Size3D `(width, height, depth)`
-- [x] Cube `(Point3D, Size3D)`
-- [ ] Sphere
+- [x] **Point** `(x, y)`
+- [x] **Size** `(width, height)`
+- [x] **Rectangle** `(point, size)`
+- [x] **Circle** `(Point, radius)`
+- [x] **Point3D** `(x, y, z)`
+- [x] **Size3D** `(width, height, depth)`
+- [x] **Cube** `(Point3D, Size3D)`
+- [ ] **Sphere** 
 
 ### Some examples
 Get angle between two points in degrees
