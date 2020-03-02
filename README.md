@@ -12,6 +12,8 @@ Some useful structures for graphics programming in JavaScript I guess...
 - [x] **Sphere** `(Point3D, radius)`
 - [x] **Line** `(Point, Point)`
 - [x] **Line3D** `(Point3D, Point3D)`
+- [ ] **Polygon**
+- [ ] **Polygon3D**
 
 ### NodeJS require all
 ```javascript
