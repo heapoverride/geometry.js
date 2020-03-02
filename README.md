@@ -92,7 +92,7 @@ console.log(line.angle().radians);
 ```
 
 #### Polygon
-Create a Polygon from Points
+Create a polygon from array of points
 ```javascript
 var polygon = new Polygon().fromPoints(
     new Point(1500, 1000),
@@ -104,7 +104,7 @@ var polygon = new Polygon().fromPoints(
 );
 ```
 
-Drawing the Polygon above to HTML5 canvas (or nodejs)
+Drawing the polygon above to HTML5 canvas (or nodejs)
 <img src="https://i.ibb.co/XsvYkcF/image.png" align="right">
 ```javascript
 ctx.lineWidth = 50;
