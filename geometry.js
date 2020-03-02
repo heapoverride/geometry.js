@@ -52,7 +52,7 @@ class Point {
     /**
     * Get angle between this Point and another Point in radians and degrees
     * @param {Point} point
-    * @returns {object}
+    * @returns {object} radians, degrees
     */
     angleTo(point) {
         var r = Math.atan2(point.Y - this.Y, point.X - this.X);
@@ -255,6 +255,17 @@ class Point3D {
     }
 
     /**
+    * Get angle between this Point3D and another Point3D in radians and degrees
+    * @param {Point3D} point
+    * @returns {object} radians, degrees
+    */
+    angleTo(point) {
+        var r = Math.atan2(point.Y - this.Y, point.X - this.X);
+        var d = r * (180/Math.PI);
+        return {radians: r, degrees: d};
+    }
+
+    /**
     * Test if this Point3D is inside a Cube
     * @param {Cube} cube
     * @returns {boolean}
@@ -427,7 +438,7 @@ class Line {
 
     /**
     * Get angle between Line's two points in radians and degrees
-    * @returns {object}
+    * @returns {object} radians, degrees
     */
     angle() {
         return this.point_a.angleTo(this.point_b);
