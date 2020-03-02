@@ -85,3 +85,15 @@ var line = new Line(new Point(0, 0), new Point(100, 100));
 console.log(line.length());
 console.log(line.angle().radians);
 ```
+
+Create a Polygon from Points
+```javascript
+var polygon = new Polygon().fromPoints(
+    new Point(1500, 1000),
+    new Point(1154.5084971874737, 524.4717418524233),
+    new Point(595.4915028125263, 706.1073738537634),
+    new Point(595.4915028125263, 1293.8926261462366),
+    new Point(1154.5084971874735, 1475.5282581475767),
+    new Point(1500, 1000)
+);
+```
