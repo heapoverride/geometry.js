@@ -104,7 +104,7 @@ var polygon = new Polygon().fromPoints(
 );
 ```
 
-Drawing the Polygon above to html5 canvas (or nodejs)
+Drawing the Polygon above to HTML5 canvas (or nodejs)
 <img src="https://i.ibb.co/XsvYkcF/image.png" align="right">
 ```javascript
 ctx.lineWidth = 50;
