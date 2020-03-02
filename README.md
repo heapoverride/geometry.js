@@ -97,3 +97,21 @@ var polygon = new Polygon().fromPoints(
     new Point(1500, 1000)
 );
 ```
+
+Drawing the Polygon above to html5 canvas (or nodejs)
+<img src="https://i.ibb.co/XsvYkcF/image.png" align="right">
+```javascript
+ctx.lineWidth = 50;
+ctx.strokeStyle = '#348feb';
+ctx.fillStyle = '#0f0f0f';
+
+ctx.beginPath();
+polygon.Lines.forEach((line, i)=>{
+   if (i==0) ctx.moveTo(line.A.X, line.A.Y);
+   ctx.lineTo(line.B.X, line.B.Y);
+});
+ctx.closePath();
+
+ctx.fill();
+ctx.stroke();
+```
