@@ -266,6 +266,37 @@ class Point3D {
     }
 
     /**
+    * Get angle between this Point3D and another Point3D in radians and degrees (XY plane)
+    * @param {Point3D} point
+    * @returns {object} radians, degrees
+    */
+    angleToXY(point) {
+        return this.angleTo(point);
+    }
+
+    /**
+    * Get angle between this Point3D and another Point3D in radians and degrees (YZ plane)
+    * @param {Point3D} point
+    * @returns {object} radians, degrees
+    */
+    angleToYZ(point) {
+        var r = Math.atan2(point.Y - this.Y, point.Z - this.Z);
+        var d = r * (180/Math.PI);
+        return {radians: r, degrees: d};
+    }
+
+    /**
+    * Get angle between this Point3D and another Point3D in radians and degrees (XZ plane)
+    * @param {Point3D} point
+    * @returns {object} radians, degrees
+    */
+    angleToXZ(point) {
+        var r = Math.atan2(point.X - this.X, point.Z - this.Z);
+        var d = r * (180/Math.PI);
+        return {radians: r, degrees: d};
+    }
+
+    /**
     * Test if this Point3D is inside a Cube
     * @param {Cube} cube
     * @returns {boolean}
