@@ -17,7 +17,7 @@ Some useful structures for graphics programming in JavaScript I guess...
 
 ### NodeJS require all
 ```javascript
-const { Size, Point, Rectangle, Circle, Point3D, Size3D, Cube, Sphere, Line, Line3D } = require('./geometry.js');
+const { Size, Point, Rectangle, Circle, Point3D, Size3D, Cube, Sphere, Line, Line3D, Polygon, Polygon3D } = require('./geometry.js');
 ```
 
 ### Some examples
