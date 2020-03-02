@@ -468,6 +468,25 @@ class Line {
     }
 
     /**
+    * Test if this Line intersects with another Line
+    * @param {Line} line
+    * @returns {boolean}
+    */
+    intersectsWith(line) {
+        var a = this;
+        var b = line;
+
+        var det = (a.B.X - a.A.X) * (b.B.Y - b.A.Y) - (b.B.X - b.A.X) * (a.B.Y - a.A.Y);
+        if (det === 0) {
+            return false;
+        } else {
+            var lambda = ((b.B.Y - b.A.Y) * (b.B.X - a.A.X) + (b.A.X - b.B.X) * (b.B.Y - a.A.Y)) / det;
+            var gamma = ((a.A.Y - a.B.Y) * (b.B.X - a.A.X) + (a.B.X - a.A.X) * (b.B.Y - a.A.Y)) / det;
+            return (0 < lambda && lambda < 1) && (0 < gamma && gamma < 1);
+        }
+    }
+
+    /**
     * Get angle between Line's two points in radians and degrees
     * @returns {object} radians, degrees
     */
@@ -502,4 +521,84 @@ class Line3D {
     }
 }
 
-if (typeof(module)!='undefined') module.exports = { Size, Point, Rectangle, Circle, Point3D, Size3D, Cube, Sphere, Line, Line3D };
+class Polygon {
+    lines = [];
+
+    /**
+    * Create new Polygon
+    * @param {...Line} lines
+    */
+    constructor(...lines) {
+        if (lines!=null && lines.length > 0) {
+            this.lines = lines;
+        }
+    }
+
+    get Lines() { return this.lines; } set Lines(lines) { this.lines = lines; }
+
+    /**
+    * Add Line(s) to Polygon
+    * @param {...Line} lines
+    */
+    add(...lines) {
+        if (lines!=null && lines.length > 0) {
+            this.lines.push(...lines);
+        }
+    }
+
+    /**
+    * Create new Polygon from Points instead of Lines
+    * @param {...Point} points
+    */
+    fromPoints(...points) {
+        var p = new Polygon();
+        if (points!=null && points.length > 0) {
+            for (let i=0; i<points.length-1; i++) {
+                p.add(new Line(points[i], points[i+1]));
+            }
+        }
+        return p;
+    }
+}
+
+class Polygon3D {
+    lines = [];
+
+    /**
+    * Create new Polygon
+    * @param {...Line3D} lines
+    */
+    constructor(...lines) {
+        if (lines!=null && lines.length > 0) {
+            this.lines = lines;
+        }
+    }
+
+    get Lines() { return this.lines; } set Lines(lines) { this.lines = lines; }
+
+    /**
+    * Add Lines to Polygon
+    * @param {...Line3D} lines
+    */
+    add(...lines) {
+        if (lines!=null && lines.length > 0) {
+            this.lines.push(...lines);
+        }
+    }
+
+    /**
+    * Create new Polygon from Points instead of Lines
+    * @param {...Point3D} points
+    */
+    fromPoints(...points) {
+        var p = new Polygon3D();
+        if (points!=null && points.length > 0) {
+            for (let i=0; i<points.length-1; i++) {
+                p.add(new Line3D(points[i], points[i+1]));
+            }
+        }
+        return p;
+    }
+}
+
+if (typeof(module)!='undefined') module.exports = { Size, Point, Rectangle, Circle, Point3D, Size3D, Cube, Sphere, Line, Line3D, Polygon, Polygon3D };
