@@ -21,7 +21,7 @@ const { Size, Point, Rectangle, Circle, Point3D, Size3D, Cube, Sphere, Line, Lin
 ```
 
 ### Some examples
-## Point
+#### Point
 Get angle between two points in degrees
 ```javascript
 var a = new Point(0, 0);
@@ -36,7 +36,7 @@ var b = new Point(100, 400);
 console.log(a.distanceTo(b));
 ```
 
-## Rectangle
+#### Rectangle
 Determine if a rectangle is completely inside another rectangle
 ```javascript
 var a = new Rectangle(new Point(0, 0), new Size(20, 15));
@@ -44,7 +44,7 @@ var b = new Rectangle(new Point(5, 5), new Size(10, 8));
 console.log(b.isInside(a));
 ```
 
-## Circle
+#### Circle
 Determine if two circles intersect
 ```javascript
 var a = new Circle(new Point(-20, -20), 40);
@@ -52,7 +52,7 @@ var b = new Circle(new Point(50, 50), 90);
 console.log(b.intersectsWith(a));
 ```
 
-## Cube
+#### Cube
 Determine if two cubes intersect
 ```javascript
 var a = new Cube(new Point3D(0, 0, 0), new Size3D(200, 50, 50));
@@ -60,7 +60,7 @@ var b = new Cube(new Point3D(100, 0, 0), new Size3D(200, 50, 50));
 console.log(a.intersectsWith(b));
 ```
 
-## Point3D
+#### Point3D
 Get distance between two points in 3d space
 ```javascript
 var a = new Point3D(0, 0, 0);
@@ -68,7 +68,7 @@ var b = new Point3D(100, 100, 100);
 console.log(a.distanceTo(b));
 ```
 
-## Sphere
+#### Sphere
 Determine if two spheres intersect
 ```javascript
 var a = new Sphere(new Point3D(0, 0, 0), 300);
@@ -83,7 +83,7 @@ var b = new Sphere(new Point3D(30, 30, 0), 190);
 console.log(b.isInside(a));
 ```
 
-## Line
+#### Line
 Get line's length and angle between it's two points in radians
 ```javascript
 var line = new Line(new Point(0, 0), new Point(100, 100));
@@ -91,7 +91,7 @@ console.log(line.length());
 console.log(line.angle().radians);
 ```
 
-## Polygon
+#### Polygon
 Create a Polygon from Points
 ```javascript
 var polygon = new Polygon().fromPoints(
