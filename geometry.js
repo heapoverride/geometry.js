@@ -77,6 +77,27 @@ class Point {
         return false;
     }
 
+    /**
+    * Rotate this point n degrees around specified central Point
+    * @param {Point} point
+    * @param {number} angle Angle in degrees
+    * @returns {Point}
+    */
+    rotate(point, angle) {
+        var rad = (Math.PI/180)*angle,
+            cx = point.X,
+            cy = point.Y,
+            cos = Math.cos(rad),
+            sin = Math.sin(rad),
+            nx = (cos*(this.X-cx)) + (sin*(this.Y-cy)) + cx,
+            ny = (cos*(this.Y-cy)) - (sin*(this.X-cx)) + cy;
+
+        this.X = nx;
+        this.Y = ny;
+
+        return this;
+    }
+
     copy() { return Object.assign(new Point(), this); }
 }
 
@@ -523,6 +544,7 @@ class Line3D {
 
 class Polygon {
     lines = [];
+    center = new Point(0, 0);
 
     /**
     * Create new Polygon
@@ -534,6 +556,7 @@ class Polygon {
         }
     }
 
+    get Center() { return this.center; } set Center(point) { this.center = point; }
     get Lines() { return this.lines; } set Lines(lines) { this.lines = lines; }
 
     /**
@@ -558,6 +581,18 @@ class Polygon {
             }
         }
         return p;
+    }
+
+    /**
+    * Rotate this polygon n degrees around central Point
+    * @param {Point} point
+    * @param {number} angle Angle in degrees
+    */
+    rotate(point, angle) {
+        for (let i=0; i<this.lines.length; i++) {
+            this.lines[i].A.rotate(point, angle);
+            this.lines[i].B.rotate(point, angle);
+        }
     }
 }
 
