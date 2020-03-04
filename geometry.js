@@ -543,44 +543,30 @@ class Line3D {
 }
 
 class Polygon {
-    lines = [];
     center = new Point(0, 0);
+    points = [];
 
     /**
     * Create new Polygon
-    * @param {...Line} lines
+    * @param {...Point} points
     */
-    constructor(...lines) {
-        if (lines!=null && lines.length > 0) {
-            this.lines = lines;
+    constructor(...points) {
+        if (points!=null && points.length > 0) {
+            this.points = points;
         }
     }
 
     get Center() { return this.center; } set Center(point) { this.center = point; }
-    get Lines() { return this.lines; } set Lines(lines) { this.lines = lines; }
+    get Points() { return this.points; } set Points(points) { this.points = points; }
 
     /**
-    * Add Line(s) to Polygon
-    * @param {...Line} lines
-    */
-    add(...lines) {
-        if (lines!=null && lines.length > 0) {
-            this.lines.push(...lines);
-        }
-    }
-
-    /**
-    * Create new Polygon from Points instead of Lines
+    * Add Points to Polygon
     * @param {...Point} points
     */
-    fromPoints(...points) {
-        var p = new Polygon();
+    add(...points) {
         if (points!=null && points.length > 0) {
-            for (let i=0; i<points.length-1; i++) {
-                p.add(new Line(points[i], points[i+1]));
-            }
+            this.points.push(...points);
         }
-        return p;
     }
 
     /**
@@ -589,50 +575,37 @@ class Polygon {
     * @param {number} angle Angle in degrees
     */
     rotate(point, angle) {
-        for (let i=0; i<this.lines.length; i+=2) {
-            this.lines[i].A.rotate(point, angle);
-            this.lines[i].B.rotate(point, angle);
+        for (let i=0; i<this.points.length; i++) {
+            this.points[i].rotate(point, angle);
         }
     }
 }
 
 class Polygon3D {
-    lines = [];
+    center = new Point3D(0, 0, 0);
+    points = [];
 
     /**
     * Create new Polygon3D
-    * @param {...Line3D} lines
-    */
-    constructor(...lines) {
-        if (lines!=null && lines.length > 0) {
-            this.lines = lines;
-        }
-    }
-
-    get Lines() { return this.lines; } set Lines(lines) { this.lines = lines; }
-
-    /**
-    * Add Lines to Polygon
-    * @param {...Line3D} lines
-    */
-    add(...lines) {
-        if (lines!=null && lines.length > 0) {
-            this.lines.push(...lines);
-        }
-    }
-
-    /**
-    * Create new Polygon from Points instead of Lines
     * @param {...Point3D} points
     */
-    fromPoints(...points) {
-        var p = new Polygon3D();
+    constructor(...points) {
         if (points!=null && points.length > 0) {
-            for (let i=0; i<points.length-1; i++) {
-                p.add(new Line3D(points[i], points[i+1]));
-            }
+            this.points = points;
         }
-        return p;
+    }
+
+    get Center() { return this.center; } set Center(point) { this.center = point; }
+    get Points() { return this.points; } set Points(points) { this.points = points; }
+
+    /**
+    * Add Points to Polygon
+    * @param {...Point3D} points
+    */
+    add(...points) {
+        if (points!=null && points.length > 0) {
+            this.points.push(...points);
+        }
     }
 }
 
