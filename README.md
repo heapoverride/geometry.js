@@ -112,9 +112,9 @@ ctx.strokeStyle = '#348feb';
 ctx.fillStyle = '#0f0f0f';
 
 ctx.beginPath();
-polygon.Lines.forEach((line, i)=>{
-   if (i==0) ctx.moveTo(line.A.X, line.A.Y);
-   ctx.lineTo(line.B.X, line.B.Y);
+polygon.Points.forEach((point, i)=>{
+   if (i==0) ctx.moveTo(point.X, point.Y);
+   ctx.lineTo(point.X, point.Y);
 });
 ctx.closePath();
 
