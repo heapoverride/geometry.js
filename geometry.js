@@ -589,7 +589,7 @@ class Polygon {
     * @param {number} angle Angle in degrees
     */
     rotate(point, angle) {
-        for (let i=0; i<this.lines.length; i++) {
+        for (let i=0; i<this.lines.length; i+=2) {
             this.lines[i].A.rotate(point, angle);
             this.lines[i].B.rotate(point, angle);
         }
