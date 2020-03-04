@@ -600,7 +600,7 @@ class Polygon3D {
     lines = [];
 
     /**
-    * Create new Polygon
+    * Create new Polygon3D
     * @param {...Line3D} lines
     */
     constructor(...lines) {
