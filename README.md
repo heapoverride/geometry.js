@@ -94,13 +94,12 @@ console.log(line.angle().radians);
 #### Polygon
 Create a polygon from array of points
 ```javascript
-var polygon = new Polygon().fromPoints(
+var polygon = new Polygon(
     new Point(1500, 1000),
     new Point(1154.5084971874737, 524.4717418524233),
     new Point(595.4915028125263, 706.1073738537634),
     new Point(595.4915028125263, 1293.8926261462366),
-    new Point(1154.5084971874735, 1475.5282581475767),
-    new Point(1500, 1000)
+    new Point(1154.5084971874735, 1475.5282581475767)
 );
 ```
 
