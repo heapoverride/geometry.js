@@ -570,6 +570,29 @@ class Polygon {
     }
 
     /**
+    * Automatically create a new polygon with n number of sides
+    * @param {Point} point
+    * @param {number} radius
+    * @param {number} sides
+    * @returns {Polygon}
+    */
+    create(point, radius, sides=3) {
+        var poly = new Polygon();
+        var step = 2*Math.PI/sides;
+        var h = point.X;
+        var k = point.Y;
+        var r = radius;
+
+        for (var theta=0; theta < 2*Math.PI; theta+=step) {
+            var x = h+r*Math.cos(theta);
+            var y = k-r*Math.sin(theta);
+            poly.add(new Point(x, y));
+        }
+
+        return poly;
+    }
+
+    /**
     * Rotate this polygon n degrees around central Point
     * @param {Point} point
     * @param {number} angle Angle in degrees
