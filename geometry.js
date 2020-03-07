@@ -109,6 +109,17 @@ class Point {
         return a.X * b.X+a.Y * b.Y;
     }
 
+    /**
+    * Signed area of a parallelogram with vectors as side lengths. Half of this is the area of a triangle (cross product)
+    * @param {Point} point
+    * @returns {number}
+    */
+    cross(point) {
+        var a = this;
+        var b = point;
+        return a.X*b.Y - a.Y*b.X;
+    }
+
     add(point){
         var a = this;
         var b = point;
