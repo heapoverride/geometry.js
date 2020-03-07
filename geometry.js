@@ -98,6 +98,17 @@ class Point {
         return this;
     }
 
+    /**
+    * Dot product for this Point and another Point
+    * @param {Point} point
+    * @returns {number}
+    */
+    dot(point) {
+        var a = this;
+        var b = point;
+        return a.X * b.X+a.Y * b.Y;
+    }
+
     copy() { return Object.assign(new Point(), this); }
 }
 
@@ -333,6 +344,17 @@ class Point3D {
         }
 
         return false;
+    }
+
+    /**
+    * Dot product for this Point3D and another Point3D
+    * @param {Point3D} point
+    * @returns {number}
+    */
+    dot(point) {
+        var a = this;
+        var b = point;
+        return a.X * b.X+a.Y * b.Y+a.Z * b.Z;
     }
 
     copy() { return Object.assign(new Point3D(), this); }
