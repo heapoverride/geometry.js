@@ -109,6 +109,20 @@ class Point {
         return a.X * b.X+a.Y * b.Y;
     }
 
+    add(point){
+        var a = this;
+        var b = point;
+        return new Point(a.X + b.X, a.Y + b.Y);
+    }
+    subtract(point){
+        var a = this;
+        var b = point;
+        return new Point(a.X-b.X, a.Y-b.Y);
+    }
+    scale(factor) {
+        return new Point(factor*this.X, factor*this.Y);
+    }
+
     copy() { return Object.assign(new Point(), this); }
 }
 
@@ -355,6 +369,20 @@ class Point3D {
         var a = this;
         var b = point;
         return a.X * b.X+a.Y * b.Y+a.Z * b.Z;
+    }
+
+    add(point){
+        var a = this;
+        var b = point;
+        return new Point3D(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
+    }
+    subtract(point){
+        var a = this;
+        var b = point;
+        return new Point3D(a.X-b.X, a.Y-b.Y, a.Z-b.Z);
+    }
+    scale(factor) {
+        return new Point3D(factor*this.X, factor*this.Y, factor*this.Z);
     }
 
     copy() { return Object.assign(new Point3D(), this); }
