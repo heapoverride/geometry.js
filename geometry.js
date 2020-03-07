@@ -122,6 +122,20 @@ class Point {
     scale(factor) {
         return new Point(factor*this.X, factor*this.Y);
     }
+    length() {
+        return Math.sqrt(this.dot(this));
+    }
+
+    /**
+    * Creates new Point along the segment n units from this Point towards another Point
+    * @param {Point} point
+    * @param {number} units
+    */
+    pointAt(point, units) {
+        var a = this;
+        var b = point;
+        return a.add((b.subtract(a)).scale(units/(b.subtract(a)).length()));
+    }
 
     copy() { return Object.assign(new Point(), this); }
 }
@@ -383,6 +397,14 @@ class Point3D {
     }
     scale(factor) {
         return new Point3D(factor*this.X, factor*this.Y, factor*this.Z);
+    }
+    length() {
+        return Math.sqrt(this.dot(this));
+    }
+    cross(point) {
+        var a = this;
+        var b = point;
+        return new Point3D(a.Y*b.Z - a.Z*b.Y, b.Z*b.X - a.X*b.Z, a.X*b.Y - a.Y*b.X);
     }
 
     copy() { return Object.assign(new Point3D(), this); }
