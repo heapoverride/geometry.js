@@ -685,6 +685,18 @@ class Polygon {
             this.points[i].rotate(point, angle);
         }
     }
+
+    /**
+    * Move this Polygon
+    * @param {number} x
+    * @param {number} y
+    */
+    move(x=0, y=0) {
+        for (let i=0; i<this.points.length; i++) {
+            this.points[i].X += x;
+            this.points[i].Y += y;
+        }
+    }
 }
 
 class Polygon3D {
@@ -711,6 +723,19 @@ class Polygon3D {
     add(...points) {
         if (points!=null && points.length > 0) {
             this.points.push(...points);
+        }
+    }
+
+    /**
+    * Move this Polygon3D
+    * @param {number} x
+    * @param {number} y
+    */
+    move(x=0, y=0, z=0) {
+        for (let i=0; i<this.points.length; i++) {
+            this.points[i].X += x;
+            this.points[i].Y += y;
+            this.points[i].Z += z;
         }
     }
 }
