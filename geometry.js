@@ -68,7 +68,7 @@ class Point {
     */
     pointAtDegreesSteps(angle, steps) {
         var a = this;
-        var b = new Point(steps*cos(angle*Math.PI/180), steps*sin(angle*Math.PI/180));
+        var b = new Point(steps*Math.cos(angle*Math.PI/180), steps*Math.sin(angle*Math.PI/180));
         return a.add(b);
     }
 
