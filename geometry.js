@@ -48,6 +48,16 @@ class Point {
         
         return distance;
     }
+	
+    /**
+    * Move this Point
+    * @param {number} x
+	* @param {number} y
+    */
+    move(x, y) {
+        this.x += x;
+		this.y += y;
+    }
 
     /**
     * Get angle between this Point and another Point in radians and degrees
@@ -218,6 +228,15 @@ class Rectangle {
 
         return false;
     }
+	
+    /**
+    * Move this Rectangle
+    * @param {number} x
+	* @param {number} y
+    */
+    move(x, y) {
+        this.point.move(x, y);
+    }
 }
 
 class Circle {
@@ -279,6 +298,15 @@ class Circle {
         }
 
         return false;
+    }
+	
+    /**
+    * Move this Circle
+    * @param {number} x
+	* @param {number} y
+    */
+    move(x, y) {
+        this.point.move(x, y);
     }
 }
 
@@ -396,6 +424,18 @@ class Point3D {
 
         return false;
     }
+	
+    /**
+    * Move this Point3D
+    * @param {number} x
+	* @param {number} y
+	* @param {number} z
+    */
+    move(x, y, z) {
+        this.x += x;
+		this.y += y;
+		this.z += z;
+    }
 
     /**
     * Dot product for this Point3D and another Point3D
@@ -493,6 +533,16 @@ class Cube {
 
         return false;
     }
+	
+    /**
+    * Move this Cube
+    * @param {number} x
+	* @param {number} y
+	* @param {number} z
+    */
+    move(x, y, z) {
+        this.point.move(x, y, z);
+    }
 }
 
 class Sphere {
@@ -556,6 +606,16 @@ class Sphere {
 
         return false;
     }
+	
+    /**
+    * Move this Sphere
+    * @param {number} x
+	* @param {number} y
+	* @param {number} z
+    */
+    move(x, y, z) {
+        this.point.move(x, y, z);
+    }
 }
 
 class Line {
@@ -609,6 +669,28 @@ class Line {
     angle() {
         return this.point_a.angleTo(this.point_b);
     }
+	
+    /**
+    * Rotate this Line n degrees around specified central Point
+    * @param {Point} point
+    * @param {number} angle Angle in degrees
+    * @returns {Line}
+    */
+    rotate(point, angle) {
+		this.point_a.rotate(point, angle);
+		this.point_b.rotate(point, angle);
+		return this;
+    }
+	
+    /**
+    * Move this Line
+    * @param {number} x
+	* @param {number} y
+    */
+    move(x, y) {
+        this.point_a.move(x, y);
+		this.point_b.move(x, y);
+    }
 }
 
 class Line3D {
@@ -634,6 +716,16 @@ class Line3D {
     */
     length() {
         return this.point_a.distanceTo(this.point_b);
+    }
+	
+    /**
+    * Move this Line3D
+    * @param {number} x
+	* @param {number} y
+    */
+    move(x, y, z) {
+        this.point_a.move(x, y, z);
+		this.point_b.move(x, y, z);
     }
 }
 
@@ -665,7 +757,7 @@ class Polygon {
     }
 
     /**
-    * Automatically create a new polygon with n number of sides
+    * Automatically create a new Polygon with n number of sides
     * @param {Point} point
     * @param {number} radius
     * @param {number} sides
@@ -688,7 +780,7 @@ class Polygon {
     }
 
     /**
-    * Rotate this polygon n degrees around central Point
+    * Rotate this Polygon n degrees around central Point
     * @param {Point} point
     * @param {number} angle Angle in degrees
     */
@@ -703,10 +795,9 @@ class Polygon {
     * @param {number} x
     * @param {number} y
     */
-    move(x=0, y=0) {
+    move(x, y) {
         for (let i=0; i<this.points.length; i++) {
-            this.points[i].X += x;
-            this.points[i].Y += y;
+            this.points[i].move(x, y);
         }
     }
 }
@@ -743,11 +834,9 @@ class Polygon3D {
     * @param {number} x
     * @param {number} y
     */
-    move(x=0, y=0, z=0) {
+    move(x, y, z) {
         for (let i=0; i<this.points.length; i++) {
-            this.points[i].X += x;
-            this.points[i].Y += y;
-            this.points[i].Z += z;
+            this.points[i].move(x, y, z);
         }
     }
 }
