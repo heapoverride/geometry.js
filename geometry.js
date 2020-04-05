@@ -286,6 +286,15 @@ class Circle {
 
         return points;
     }
+	
+    /**
+    * Get Point at n degrees on this Circle
+    * @param {number} angle Angle in degrees
+    * @returns {Point}
+    */
+    getPoint(angle=0) {
+        return this.point.pointAtDegreesSteps(angle, this.radius);
+    }
 
     /**
     * Test if this Circle is inside another Circle
