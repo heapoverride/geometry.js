@@ -272,6 +272,22 @@ class Circle {
     }
 
     /**
+    * Get n number of Points on this Circle
+    * @param {number} n Amount of Points to return
+    * @returns {...Point}
+    */
+    getPoints(n=360) {
+        let step = 2*Math.PI/n;
+        let points = [];
+
+        for (let theta=0; theta < 2*Math.PI; theta+=step) {
+            points.push(new Point(this.X + this.radius*Math.cos(theta), this.Y - this.radius*Math.sin(theta)));
+        }
+
+        return points;
+    }
+
+    /**
     * Test if this Circle is inside another Circle
     * @param {Circle} circle
     * @returns {boolean}
