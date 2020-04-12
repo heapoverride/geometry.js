@@ -103,7 +103,7 @@ class Point {
         } else if (b instanceof Polygon) {
             
             // test if this point is inside a polygon if polygon is given
-            let vs = polygon.Points;
+            let vs = b.Points;
             for (let i = 0, j = vs.length - 1; i < vs.length; j = i++) {
                 let xi = vs[i].X, yi = vs[i].Y;
                 let xj = vs[j].X, yj = vs[j].Y;
