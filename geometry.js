@@ -48,15 +48,15 @@ class Point {
         
         return distance;
     }
-	
+    
     /**
     * Move this Point
     * @param {number} x
-	* @param {number} y
+    * @param {number} y
     */
     move(x, y) {
         this.x += x;
-		this.y += y;
+        this.y += y;
     }
 
     /**
@@ -83,17 +83,36 @@ class Point {
     }
 
     /**
-    * Test if this Point is inside a Rectangle
-    * @param {Rectangle} rect
+    * Test if this Point is inside a Rectangle or a Polygon
+    * @param {Object} obj Rectangle/Polygon
     * @returns {boolean}
     */
-    isInside(rect) {
-        var a = this;
-        var b = rect;
-
-        if ((a.X >= b.X && a.X <= b.X+b.Width) &&
-            (a.Y >= b.Y && a.Y <= b.Y+b.Height)) {
-            return true;
+    isInside(obj) {
+        let a = this;
+        let b = obj;
+        let inside = false;
+        
+        if (b instanceof Rectangle) {
+            
+            // test if this point is inside a rectangle if rectangle is given
+            if ((a.X >= b.X && a.X <= b.X+b.Width) &&
+                (a.Y >= b.Y && a.Y <= b.Y+b.Height)) {
+                return true;
+            }
+            
+        } else if (b instanceof Polygon) {
+            
+            // test if this point is inside a polygon if polygon is given
+            let vs = polygon.Points;
+            for (let i = 0, j = vs.length - 1; i < vs.length; j = i++) {
+                let xi = vs[i].X, yi = vs[i].Y;
+                let xj = vs[j].X, yj = vs[j].Y;
+                let intersect = ((yi > a.Y) != (yj > a.Y))
+                    && (a.X < (xj - xi) * (a.Y - yi) / (yj - yi) + xi);
+                if (intersect) inside = !inside;
+            }
+            return inside;
+            
         }
 
         return false;
@@ -228,11 +247,11 @@ class Rectangle {
 
         return false;
     }
-	
+    
     /**
     * Move this Rectangle
     * @param {number} x
-	* @param {number} y
+    * @param {number} y
     */
     move(x, y) {
         this.point.move(x, y);
@@ -286,7 +305,7 @@ class Circle {
 
         return points;
     }
-	
+    
     /**
     * Get Point at n degrees on this Circle
     * @param {number} angle Angle in degrees
@@ -324,11 +343,11 @@ class Circle {
 
         return false;
     }
-	
+    
     /**
     * Move this Circle
     * @param {number} x
-	* @param {number} y
+    * @param {number} y
     */
     move(x, y) {
         this.point.move(x, y);
@@ -449,17 +468,17 @@ class Point3D {
 
         return false;
     }
-	
+    
     /**
     * Move this Point3D
     * @param {number} x
-	* @param {number} y
-	* @param {number} z
+    * @param {number} y
+    * @param {number} z
     */
     move(x, y, z) {
         this.x += x;
-		this.y += y;
-		this.z += z;
+        this.y += y;
+        this.z += z;
     }
 
     /**
@@ -558,12 +577,12 @@ class Cube {
 
         return false;
     }
-	
+    
     /**
     * Move this Cube
     * @param {number} x
-	* @param {number} y
-	* @param {number} z
+    * @param {number} y
+    * @param {number} z
     */
     move(x, y, z) {
         this.point.move(x, y, z);
@@ -631,12 +650,12 @@ class Sphere {
 
         return false;
     }
-	
+    
     /**
     * Move this Sphere
     * @param {number} x
-	* @param {number} y
-	* @param {number} z
+    * @param {number} y
+    * @param {number} z
     */
     move(x, y, z) {
         this.point.move(x, y, z);
@@ -694,7 +713,7 @@ class Line {
     angle() {
         return this.point_a.angleTo(this.point_b);
     }
-	
+    
     /**
     * Rotate this Line n degrees around specified central Point
     * @param {Point} point
@@ -702,19 +721,19 @@ class Line {
     * @returns {Line}
     */
     rotate(point, angle) {
-		this.point_a.rotate(point, angle);
-		this.point_b.rotate(point, angle);
-		return this;
+        this.point_a.rotate(point, angle);
+        this.point_b.rotate(point, angle);
+        return this;
     }
-	
+    
     /**
     * Move this Line
     * @param {number} x
-	* @param {number} y
+    * @param {number} y
     */
     move(x, y) {
         this.point_a.move(x, y);
-		this.point_b.move(x, y);
+        this.point_b.move(x, y);
     }
 }
 
@@ -742,15 +761,15 @@ class Line3D {
     length() {
         return this.point_a.distanceTo(this.point_b);
     }
-	
+    
     /**
     * Move this Line3D
     * @param {number} x
-	* @param {number} y
+    * @param {number} y
     */
     move(x, y, z) {
         this.point_a.move(x, y, z);
-		this.point_b.move(x, y, z);
+        this.point_b.move(x, y, z);
     }
 }
 
