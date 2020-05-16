@@ -83,8 +83,8 @@ class Point {
     }
 
     /**
-    * Test if this Point is inside a Rectangle or a Polygon
-    * @param {Object} obj Rectangle/Polygon
+    * Test if this Point is inside a Rectangle, Circle or a Polygon
+    * @param {Object} obj Rectangle|Circle|Polygon
     * @returns {boolean}
     */
     isInside(obj) {
@@ -94,15 +94,21 @@ class Point {
         
         if (b instanceof Rectangle) {
             
-            // test if this point is inside a rectangle if rectangle is given
+            // test if this point is inside a rectangle
             if ((a.X >= b.X && a.X <= b.X+b.Width) &&
                 (a.Y >= b.Y && a.Y <= b.Y+b.Height)) {
                 return true;
             }
+
+        } else if (b instanceof Circle) {
+
+            // test if this point is inside a circle
+            let c = new Circle(this, 0);
+            return c.isInside(b);
             
         } else if (b instanceof Polygon) {
             
-            // test if this point is inside a polygon if polygon is given
+            // test if this point is inside a polygon
             let vs = b.Points;
             for (let i = 0, j = vs.length - 1; i < vs.length; j = i++) {
                 let xi = vs[i].X, yi = vs[i].Y;
