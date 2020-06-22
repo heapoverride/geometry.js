@@ -24,69 +24,69 @@ const { Size, Point, Rectangle, Circle, Point3D, Size3D, Cube, Sphere, Line, Lin
 #### Point
 Get angle between two points in degrees
 ```javascript
-var a = new Point(0, 0);
-var b = new Point(40, 40);
+const a = new Point(0, 0);
+const b = new Point(40, 40);
 console.log(a.angleTo(b).degrees);
 ```
 
 Get distance between two points
 ```javascript
-var a = new Point(50, 50);
-var b = new Point(100, 400);
+const a = new Point(50, 50);
+const b = new Point(100, 400);
 console.log(a.distanceTo(b));
 ```
 
 #### Rectangle
 Determine if a rectangle is completely inside another rectangle
 ```javascript
-var a = new Rectangle(new Point(0, 0), new Size(20, 15));
-var b = new Rectangle(new Point(5, 5), new Size(10, 8));
+const a = new Rectangle(new Point(0, 0), new Size(20, 15));
+const b = new Rectangle(new Point(5, 5), new Size(10, 8));
 console.log(b.isInside(a));
 ```
 
 #### Circle
 Determine if two circles intersect
 ```javascript
-var a = new Circle(new Point(-20, -20), 40);
-var b = new Circle(new Point(50, 50), 90);
+const a = new Circle(new Point(-20, -20), 40);
+const b = new Circle(new Point(50, 50), 90);
 console.log(b.intersectsWith(a));
 ```
 
 #### Cube
 Determine if two cubes intersect
 ```javascript
-var a = new Cube(new Point3D(0, 0, 0), new Size3D(200, 50, 50));
-var b = new Cube(new Point3D(100, 0, 0), new Size3D(200, 50, 50));
+const a = new Cube(new Point3D(0, 0, 0), new Size3D(200, 50, 50));
+const b = new Cube(new Point3D(100, 0, 0), new Size3D(200, 50, 50));
 console.log(a.intersectsWith(b));
 ```
 
 #### Point3D
 Get distance between two points in 3d space
 ```javascript
-var a = new Point3D(0, 0, 0);
-var b = new Point3D(100, 100, 100);
+const a = new Point3D(0, 0, 0);
+const b = new Point3D(100, 100, 100);
 console.log(a.distanceTo(b));
 ```
 
 #### Sphere
 Determine if two spheres intersect
 ```javascript
-var a = new Sphere(new Point3D(0, 0, 0), 300);
-var b = new Sphere(new Point3D(200, 0, 0), 300);
+const a = new Sphere(new Point3D(0, 0, 0), 300);
+const b = new Sphere(new Point3D(200, 0, 0), 300);
 console.log(a.intersectsWith(b));
 ```
 
 Determine if a sphere is completely inside another sphere
 ```javascript
-var a = new Sphere(new Point3D(0, 0, 0), 300);
-var b = new Sphere(new Point3D(30, 30, 0), 190);
+const a = new Sphere(new Point3D(0, 0, 0), 300);
+const b = new Sphere(new Point3D(30, 30, 0), 190);
 console.log(b.isInside(a));
 ```
 
 #### Line
 Get line's length and angle between it's two points in radians
 ```javascript
-var line = new Line(new Point(0, 0), new Point(100, 100));
+const line = new Line(new Point(0, 0), new Point(100, 100));
 console.log(line.length());
 console.log(line.angle().radians);
 ```
@@ -94,7 +94,7 @@ console.log(line.angle().radians);
 #### Polygon
 Create a polygon from array of points
 ```javascript
-var polygon = new Polygon(
+const polygon = new Polygon(
     new Point(1500, 1000),
     new Point(1154.5084971874737, 524.4717418524233),
     new Point(595.4915028125263, 706.1073738537634),
