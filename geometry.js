@@ -796,18 +796,18 @@ class Polygon {
         let centroidX = 0, centroidY = 0,
             det = 0, tempDet = 0, j = 0;
 
-        for (let i = 0; i < polygon.Points.length; i++) {
-            if (i + 1 == polygon.Points.length) {
+        for (let i = 0; i < this.points.length; i++) {
+            if (i + 1 == this.points.length) {
                 j = 0;
             } else {
                 j = i + 1;
             }
 
-            tempDet = (polygon.Points[i].x * polygon.Points[j].y) - (polygon.Points[j].x * polygon.Points[i].y);
+            tempDet = (this.points[i].x * this.points[j].y) - (this.points[j].x * this.points[i].y);
             det += tempDet;
 
-            centroidX += (polygon.Points[i].x + polygon.Points[j].x) * tempDet;
-            centroidY += (polygon.Points[i].y + polygon.Points[j].y) * tempDet;
+            centroidX += (this.points[i].x + this.points[j].x) * tempDet;
+            centroidY += (this.points[i].y + this.points[j].y) * tempDet;
         }
 
         centroidX /= 3 * det;
