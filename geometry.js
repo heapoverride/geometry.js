@@ -780,7 +780,6 @@ class Line3D {
 }
 
 class Polygon {
-    center = new Point(0, 0);
     points = [];
 
     /**
@@ -793,7 +792,29 @@ class Polygon {
         }
     }
 
-    get Center() { return this.center; } set Center(point) { this.center = point; }
+    get Center() {
+        let centroidX = 0, centroidY = 0,
+            det = 0, tempDet = 0, j = 0;
+
+        for (let i = 0; i < polygon.Points.length; i++) {
+            if (i + 1 == polygon.Points.length) {
+                j = 0;
+            } else {
+                j = i + 1;
+            }
+
+            tempDet = (polygon.Points[i].x * polygon.Points[j].y) - (polygon.Points[j].x * polygon.Points[i].y);
+            det += tempDet;
+
+            centroidX += (polygon.Points[i].x + polygon.Points[j].x) * tempDet;
+            centroidY += (polygon.Points[i].y + polygon.Points[j].y) * tempDet;
+        }
+
+        centroidX /= 3 * det;
+        centroidY /= 3 * det;
+
+        return new Point(centroidX, centroidY);
+    }
     get Points() { return this.points; } set Points(points) { this.points = points; }
 
     /**
