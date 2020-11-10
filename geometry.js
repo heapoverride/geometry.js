@@ -17,6 +17,10 @@ class Size {
     get Height() { return this.height; } set Height(height) { this.height = height; }
     
     copy() { return Object.assign(new Size(), this); }
+
+    toString() {
+        return `Size(Width = ${this.width}, Height = ${this.height})`;
+    }
 }
 
 class Point {
@@ -196,6 +200,10 @@ class Point {
     }
 
     copy() { return Object.assign(new Point(), this); }
+
+    toString() {
+        return `Point(X = ${this.X}, Y = ${this.Y})`;
+    }
 }
 
 class Rectangle {
@@ -261,6 +269,10 @@ class Rectangle {
     */
     move(x, y) {
         this.point.move(x, y);
+    }
+
+    toString() {
+        return `Rectangle(Point = ${this.Point}, Size = ${this.Size})`;
     }
 }
 
@@ -358,6 +370,10 @@ class Circle {
     move(x, y) {
         this.point.move(x, y);
     }
+
+    toString() {
+        return `Circle(Point = ${this.Point}, Radius = ${this.Radius})`;
+    }
 }
 
 class Size3D {
@@ -380,6 +396,10 @@ class Size3D {
     get Depth() { return this.depth; } set Depth(depth) { this.depth = depth; }
     
     copy() { return Object.assign(new Size3D(), this); }
+
+    toString() {
+        return `Size3D(Width = ${this.Width}, Height = ${this.Height}, Depth = ${this.Depth})`;
+    }
 }
 
 class Point3D {
@@ -521,6 +541,10 @@ class Point3D {
     }
 
     copy() { return Object.assign(new Point3D(), this); }
+
+    toString() {
+        return `Point3D(X = ${this.X}, Y = ${this.Y}, Z = ${this.Z})`;
+    }
 }
 
 class Cube {
@@ -592,6 +616,10 @@ class Cube {
     */
     move(x, y, z) {
         this.point.move(x, y, z);
+    }
+
+    toString() {
+        return `Cube(Point3D = ${this.Point3D}, Size3D = ${this.Size3D})`;
     }
 }
 
@@ -665,6 +693,10 @@ class Sphere {
     */
     move(x, y, z) {
         this.point.move(x, y, z);
+    }
+
+    toString() {
+        return `Sphere(Point3D = ${this.Point3D}, Radius = ${this.Radius})`;
     }
 }
 
@@ -741,6 +773,10 @@ class Line {
         this.point_a.move(x, y);
         this.point_b.move(x, y);
     }
+
+    toString() {
+        return `Line(A = ${this.A}, B = ${this.B}, length = ${this.length()}, angle = ${this.angle()})`;
+    }
 }
 
 class Line3D {
@@ -776,6 +812,10 @@ class Line3D {
     move(x, y, z) {
         this.point_a.move(x, y, z);
         this.point_b.move(x, y, z);
+    }
+
+    toString() {
+        return `Line(A = ${this.A}, B = ${this.B}, length = ${this.length()})`;
     }
 }
 
@@ -871,6 +911,11 @@ class Polygon {
             this.points[i].move(x, y);
         }
     }
+
+    toString() {
+        const text = this.Points.map(p => p.toString()).join(', ');
+        return `Polygon(Center = ${this.Center}, Points = [${text}])`;
+    }
 }
 
 class Polygon3D {
@@ -909,6 +954,11 @@ class Polygon3D {
         for (let i=0; i<this.points.length; i++) {
             this.points[i].move(x, y, z);
         }
+    }
+
+    toString() {
+        const text = this.Points.map(p => p.toString()).join(', ');
+        return `Polygon3D(Points = [${text}])`;
     }
 }
 
