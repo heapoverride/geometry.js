@@ -45,10 +45,10 @@ class Point {
     * @returns {number}
     */
     distanceTo(point) {
-        var a = this;
-        var b = point;
+        let a = this;
+        let b = point;
         
-        var distance = Math.sqrt(Math.pow(b.X-a.X, 2) + Math.pow(b.Y-a.Y, 2));
+        let distance = Math.sqrt(Math.pow(b.X-a.X, 2) + Math.pow(b.Y-a.Y, 2));
         
         return distance;
     }
@@ -69,8 +69,8 @@ class Point {
     * @returns {object} radians, degrees
     */
     angleTo(point) {
-        var r = Math.atan2(point.Y - this.Y, point.X - this.X);
-        var d = r * (180/Math.PI);
+        let r = Math.atan2(point.Y - this.Y, point.X - this.X);
+        let d = r * (180/Math.PI);
         return {radians: r, degrees: d};
     }
 
@@ -81,8 +81,8 @@ class Point {
     * @returns {Point}
     */
     pointAtDegreesSteps(angle, steps) {
-        var a = this;
-        var b = new Point(steps*Math.cos(angle*Math.PI/180), steps*Math.sin(angle*Math.PI/180));
+        let a = this;
+        let b = new Point(steps*Math.cos(angle*Math.PI/180), steps*Math.sin(angle*Math.PI/180));
         return a.add(b);
     }
 
@@ -135,7 +135,7 @@ class Point {
     * @returns {Point}
     */
     rotate(point, angle) {
-        var rad = (Math.PI/180)*angle,
+        let rad = (Math.PI/180)*angle,
             cx = point.X,
             cy = point.Y,
             cos = Math.cos(rad),
@@ -155,8 +155,8 @@ class Point {
     * @returns {number}
     */
     dot(point) {
-        var a = this;
-        var b = point;
+        let a = this;
+        let b = point;
         return a.X * b.X+a.Y * b.Y;
     }
 
@@ -166,19 +166,19 @@ class Point {
     * @returns {number}
     */
     cross(point) {
-        var a = this;
-        var b = point;
+        let a = this;
+        let b = point;
         return a.X*b.Y - a.Y*b.X;
     }
 
     add(point){
-        var a = this;
-        var b = point;
+        let a = this;
+        let b = point;
         return new Point(a.X + b.X, a.Y + b.Y);
     }
     subtract(point){
-        var a = this;
-        var b = point;
+        let a = this;
+        let b = point;
         return new Point(a.X-b.X, a.Y-b.Y);
     }
     scale(factor) {
@@ -194,8 +194,8 @@ class Point {
     * @param {number} units
     */
     pointAt(point, units) {
-        var a = this;
-        var b = point;
+        let a = this;
+        let b = point;
         return a.add((b.subtract(a)).scale(units/(b.subtract(a)).length()));
     }
 
@@ -232,8 +232,8 @@ class Rectangle {
     * @returns {boolean}
     */
     intersectsWith(rect) {
-        var a = this;
-        var b = rect;
+        let a = this;
+        let b = rect;
 
         if (((a.X >= b.X && a.X <= b.X+b.Width) || 
             (b.X >= a.X && b.X <= a.X+a.Width)) &&
@@ -251,8 +251,8 @@ class Rectangle {
     * @returns {boolean}
     */
     isInside(rect) {
-        var a = this;
-        var b = rect;
+        let a = this;
+        let b = rect;
 
         if ((a.Y >= b.Y && a.Y+a.Height <= b.Y+b.Height) &&
             (a.X >= b.X && a.X+a.Width <= b.X+b.Width)) {
@@ -300,10 +300,10 @@ class Circle {
     * @returns {number}
     */
     distanceTo(circle) {
-        var a = this;
-        var b = circle;
+        let a = this;
+        let b = circle;
 
-        var distance = Math.sqrt(Math.pow(b.X-a.X, 2) + Math.pow(b.Y-a.Y, 2));
+        let distance = Math.sqrt(Math.pow(b.X-a.X, 2) + Math.pow(b.Y-a.Y, 2));
         
         return distance;
     }
@@ -339,7 +339,7 @@ class Circle {
     * @returns {boolean}
     */
     isInside(circle) {
-        var distance = this.distanceTo(circle);
+        let distance = this.distanceTo(circle);
         if (distance+this.Radius <= circle.Radius) {
             return true;
         }
@@ -352,8 +352,8 @@ class Circle {
     * @returns {boolean}
     */
     intersectsWith(circle) {
-        var distance = this.distanceTo(circle);
-        var radius_sum = this.Radius+circle.Radius;
+        let distance = this.distanceTo(circle);
+        let radius_sum = this.Radius+circle.Radius;
 
         if (radius_sum > distance) {
             return true;
@@ -427,10 +427,10 @@ class Point3D {
     * @returns {number}
     */
     distanceTo(point) {
-        var a = this;
-        var b = point;
+        let a = this;
+        let b = point;
         
-        var distance = Math.sqrt(Math.pow(b.X-a.X, 2) + Math.pow(b.Y-a.Y, 2) + Math.pow(b.Z-a.Z, 2));
+        let distance = Math.sqrt(Math.pow(b.X-a.X, 2) + Math.pow(b.Y-a.Y, 2) + Math.pow(b.Z-a.Z, 2));
         
         return distance;
     }
@@ -441,8 +441,8 @@ class Point3D {
     * @returns {object} radians, degrees
     */
     angleTo(point) {
-        var r = Math.atan2(point.Y - this.Y, point.X - this.X);
-        var d = r * (180/Math.PI);
+        let r = Math.atan2(point.Y - this.Y, point.X - this.X);
+        let d = r * (180/Math.PI);
         return {radians: r, degrees: d};
     }
 
@@ -461,8 +461,8 @@ class Point3D {
     * @returns {object} radians, degrees
     */
     angleToYZ(point) {
-        var r = Math.atan2(point.Y - this.Y, point.Z - this.Z);
-        var d = r * (180/Math.PI);
+        let r = Math.atan2(point.Y - this.Y, point.Z - this.Z);
+        let d = r * (180/Math.PI);
         return {radians: r, degrees: d};
     }
 
@@ -472,8 +472,8 @@ class Point3D {
     * @returns {object} radians, degrees
     */
     angleToXZ(point) {
-        var r = Math.atan2(point.X - this.X, point.Z - this.Z);
-        var d = r * (180/Math.PI);
+        let r = Math.atan2(point.X - this.X, point.Z - this.Z);
+        let d = r * (180/Math.PI);
         return {radians: r, degrees: d};
     }
 
@@ -483,8 +483,8 @@ class Point3D {
     * @returns {boolean}
     */
     isInside(cube) {
-        var a = this;
-        var b = cube;
+        let a = this;
+        let b = cube;
 
         if ((a.X >= b.X && a.X <= b.X+b.Width) &&
             (a.Y >= b.Y && a.Y <= b.Y+b.Height) &&
@@ -513,19 +513,19 @@ class Point3D {
     * @returns {number}
     */
     dot(point) {
-        var a = this;
-        var b = point;
+        let a = this;
+        let b = point;
         return a.X * b.X+a.Y * b.Y+a.Z * b.Z;
     }
 
     add(point){
-        var a = this;
-        var b = point;
+        let a = this;
+        let b = point;
         return new Point3D(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
     }
     subtract(point){
-        var a = this;
-        var b = point;
+        let a = this;
+        let b = point;
         return new Point3D(a.X-b.X, a.Y-b.Y, a.Z-b.Z);
     }
     scale(factor) {
@@ -535,8 +535,8 @@ class Point3D {
         return Math.sqrt(this.dot(this));
     }
     cross(point) {
-        var a = this;
-        var b = point;
+        let a = this;
+        let b = point;
         return new Point3D(a.Y*b.Z - a.Z*b.Y, b.Z*b.X - a.X*b.Z, a.X*b.Y - a.Y*b.X);
     }
 
@@ -575,8 +575,8 @@ class Cube {
     * @returns {boolean}
     */
     intersectsWith(cube) {
-        var a = this;
-        var b = cube;
+        let a = this;
+        let b = cube;
 
         if (((a.X >= b.X && a.X <= b.X+b.Width) || 
             (b.X >= a.X && b.X <= a.X+a.Width)) &&
@@ -596,8 +596,8 @@ class Cube {
     * @returns {boolean}
     */
     isInside(cube) {
-        var a = this;
-        var b = cube;
+        let a = this;
+        let b = cube;
 
         if ((a.X > b.X && a.X+a.Width < b.X+b.Width) &&
             (a.Y > b.Y && a.Y+a.Height < b.Y+b.Height) &&
@@ -648,10 +648,10 @@ class Sphere {
     * @returns {number}
     */
     distanceTo(sphere) {
-        var a = this;
-        var b = sphere;
+        let a = this;
+        let b = sphere;
 
-        var distance = Math.sqrt(Math.pow(b.X-a.X, 2) + Math.pow(b.Y-a.Y, 2) + Math.pow(b.Z-a.Z, 2));
+        let distance = Math.sqrt(Math.pow(b.X-a.X, 2) + Math.pow(b.Y-a.Y, 2) + Math.pow(b.Z-a.Z, 2));
         
         return distance;
     }
@@ -662,7 +662,7 @@ class Sphere {
     * @returns {boolean}
     */
     isInside(sphere) {
-        var distance = this.distanceTo(sphere);
+        let distance = this.distanceTo(sphere);
         if (distance+this.Radius <= sphere.Radius) {
             return true;
         }
@@ -675,8 +675,8 @@ class Sphere {
     * @returns {boolean}
     */
     intersectsWith(sphere) {
-        var distance = this.distanceTo(sphere);
-        var radius_sum = this.Radius+sphere.Radius;
+        let distance = this.distanceTo(sphere);
+        let radius_sum = this.Radius+sphere.Radius;
 
         if (radius_sum > distance) {
             return true;
@@ -731,15 +731,15 @@ class Line {
     * @returns {boolean}
     */
     intersectsWith(line) {
-        var a = this;
-        var b = line;
+        let a = this;
+        let b = line;
 
-        var det = (a.B.X - a.A.X) * (b.B.Y - b.A.Y) - (b.B.X - b.A.X) * (a.B.Y - a.A.Y);
+        let det = (a.B.X - a.A.X) * (b.B.Y - b.A.Y) - (b.B.X - b.A.X) * (a.B.Y - a.A.Y);
         if (det === 0) {
             return false;
         } else {
-            var lambda = ((b.B.Y - b.A.Y) * (b.B.X - a.A.X) + (b.A.X - b.B.X) * (b.B.Y - a.A.Y)) / det;
-            var gamma = ((a.A.Y - a.B.Y) * (b.B.X - a.A.X) + (a.B.X - a.A.X) * (b.B.Y - a.A.Y)) / det;
+            let lambda = ((b.B.Y - b.A.Y) * (b.B.X - a.A.X) + (b.A.X - b.B.X) * (b.B.Y - a.A.Y)) / det;
+            let gamma = ((a.A.Y - a.B.Y) * (b.B.X - a.A.X) + (a.B.X - a.A.X) * (b.B.Y - a.A.Y)) / det;
             return (0 < lambda && lambda < 1) && (0 < gamma && gamma < 1);
         }
     }
@@ -832,6 +832,12 @@ class Polygon {
         }
     }
 
+    scale(factor) {
+        for (let i = 0; i < this.Points.length; i++) {
+            this.Points[i] = this.Points[i].scale(factor);
+        }
+    }
+
     get Center() {
         let centroidX = 0, centroidY = 0,
             det = 0, tempDet = 0, j = 0;
@@ -875,15 +881,15 @@ class Polygon {
     * @returns {Polygon}
     */
     create(point, radius, sides=3) {
-        var poly = new Polygon();
-        var step = 2*Math.PI/sides;
-        var h = point.X;
-        var k = point.Y;
-        var r = radius;
+        let poly = new Polygon();
+        let step = 2*Math.PI/sides;
+        let h = point.X;
+        let k = point.Y;
+        let r = radius;
 
-        for (var theta=0; theta < 2*Math.PI; theta+=step) {
-            var x = h+r*Math.cos(theta);
-            var y = k-r*Math.sin(theta);
+        for (let theta=0; theta < 2*Math.PI; theta+=step) {
+            let x = h+r*Math.cos(theta);
+            let y = k-r*Math.sin(theta);
             poly.add(new Point(x, y));
         }
 
@@ -929,6 +935,12 @@ class Polygon3D {
     constructor(...points) {
         if (points!=null && points.length > 0) {
             this.points = points;
+        }
+    }
+
+    scale(factor) {
+        for (let i = 0; i < this.Points.length; i++) {
+            this.Points[i] = this.Points[i].scale(factor);
         }
     }
 
