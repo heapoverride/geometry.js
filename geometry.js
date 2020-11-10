@@ -815,7 +815,7 @@ class Line3D {
     }
 
     toString() {
-        return `Line(A = ${this.A}, B = ${this.B}, length = ${this.length()})`;
+        return `Line3D(A = ${this.A}, B = ${this.B}, length = ${this.length()})`;
     }
 }
 
