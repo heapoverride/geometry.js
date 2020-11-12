@@ -19,7 +19,7 @@ class Size {
     copy() { return Object.assign(new Size(), this); }
 
     toString() {
-        return `Size(Width = ${this.width}, Height = ${this.height})`;
+        return `Size(Width = ${Math.round(this.width)}, Height = ${Math.round(this.height)})`;
     }
 }
 
@@ -202,7 +202,7 @@ class Point {
     copy() { return Object.assign(new Point(), this); }
 
     toString() {
-        return `Point(X = ${this.X}, Y = ${this.Y})`;
+        return `Point(X = ${Math.round(this.X)}, Y = ${Math.round(this.Y)})`;
     }
 }
 
@@ -398,7 +398,7 @@ class Size3D {
     copy() { return Object.assign(new Size3D(), this); }
 
     toString() {
-        return `Size3D(Width = ${this.Width}, Height = ${this.Height}, Depth = ${this.Depth})`;
+        return `Size3D(Width = ${Math.round(this.Width)}, Height = ${Math.round(this.Height)}, Depth = ${Math.round(this.Depth)})`;
     }
 }
 
@@ -543,7 +543,7 @@ class Point3D {
     copy() { return Object.assign(new Point3D(), this); }
 
     toString() {
-        return `Point3D(X = ${this.X}, Y = ${this.Y}, Z = ${this.Z})`;
+        return `Point3D(X = ${Math.round(this.X)}, Y = ${Math.round(this.Y)}, Z = ${Math.round(this.Z)})`;
     }
 }
 
@@ -696,7 +696,7 @@ class Sphere {
     }
 
     toString() {
-        return `Sphere(Point3D = ${this.Point3D}, Radius = ${this.Radius})`;
+        return `Sphere(Point3D = ${this.Point3D}, Radius = ${Math.round(this.Radius)})`;
     }
 }
 
@@ -775,7 +775,7 @@ class Line {
     }
 
     toString() {
-        return `Line(A = ${this.A}, B = ${this.B}, length = ${this.length()}, angle = ${this.angle()})`;
+        return `Line(A = ${this.A}, B = ${this.B}, length = ${Math.round(this.length())}, angle = ${Math.round(this.angle())})`;
     }
 }
 
@@ -815,7 +815,7 @@ class Line3D {
     }
 
     toString() {
-        return `Line3D(A = ${this.A}, B = ${this.B}, length = ${this.length()})`;
+        return `Line3D(A = ${this.A}, B = ${this.B}, length = ${Math.round(this.length())})`;
     }
 }
 
