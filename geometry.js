@@ -763,6 +763,23 @@ class Line {
         this.point_b.rotate(point, angle);
         return this;
     }
+
+    /**
+    * Get n number of points along this line
+    * @param {number} n
+    * @returns {...Point}
+    */
+    getPoints(n) {
+        const points = [];
+        const length = this.length();
+        const step = length/n;
+
+        for (let i=0; i<length; i+=step) {
+            points.push(this.point_a.pointAt(this.point_b, i));
+        }
+
+        return points;
+    }
     
     /**
     * Move this Line
