@@ -206,176 +206,6 @@ class Point {
     }
 }
 
-class Rectangle {
-    point = null; size = null;
-
-    /**
-    * Create new Rectangle
-    * @param {Point} point
-    * @param {Size} size
-    */
-    constructor(point, size) {
-        this.point = point;
-        this.size = size;
-    }
-
-    get X() { return this.point.X; } set X(x) { this.point.X = x; }
-    get Y() { return this.point.Y; } set Y(y) { this.point.Y = y; }
-    get Width() { return this.size.Width; } set Width(width) { this.size.Width = width; }
-    get Height() { return this.size.Height; } set Height(height) { this.size.Height = height; }
-    get Point() { return this.point; } set Point(point) { this.point = point; }
-    get Size() { return this.size; } set Size(size) { this.size = size; }
-
-    /**
-    * Test if this Rectangle intersects with another Rectangle
-    * @param {Rectangle} rect
-    * @returns {boolean}
-    */
-    intersectsWith(rect) {
-        let a = this;
-        let b = rect;
-
-        if (((a.X >= b.X && a.X <= b.X+b.Width) || 
-            (b.X >= a.X && b.X <= a.X+a.Width)) &&
-            ((a.Y >= b.Y && a.Y <= b.Y+b.Height) || 
-            (b.Y >= a.Y && b.Y <= a.Y+a.Height))) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-    * Test if this Rectangle is inside another Rectangle
-    * @param {Rectangle} rect
-    * @returns {boolean}
-    */
-    isInside(rect) {
-        let a = this;
-        let b = rect;
-
-        if ((a.Y >= b.Y && a.Y+a.Height <= b.Y+b.Height) &&
-            (a.X >= b.X && a.X+a.Width <= b.X+b.Width)) {
-            return true;
-        }
-
-        return false;
-    }
-    
-    /**
-    * Move this Rectangle
-    * @param {number} x
-    * @param {number} y
-    */
-    move(x, y) {
-        this.point.move(x, y);
-    }
-
-    toString() {
-        return `Rectangle(Point = ${this.Point}, Size = ${this.Size})`;
-    }
-}
-
-class Circle {
-    point = null; radius = 0;
-
-    /**
-    * Create new Circle
-    * @param {Point} point
-    * @param {number} radius
-    */
-    constructor(point, radius=0) {
-        this.point = point;
-        this.radius = radius;
-    }
-
-    get X() { return this.point.X; } set X(x) { this.point.X = x; }
-    get Y() { return this.point.Y; } set Y(y) { this.point.Y = y; }
-    get Point() { return this.point; } set Point(point) { this.point = point; }
-    get Radius() { return this.radius; } set Radius(r) { this.radius = r; }
-
-    /**
-    * Get distance from this Circle's center point to another Circle's center point
-    * @param {Circle} circle
-    * @returns {number}
-    */
-    distanceTo(circle) {
-        let a = this;
-        let b = circle;
-
-        let distance = Math.sqrt(Math.pow(b.X-a.X, 2) + Math.pow(b.Y-a.Y, 2));
-        
-        return distance;
-    }
-
-    /**
-    * Get n number of Points on this Circle
-    * @param {number} n Amount of Points to return
-    * @returns {...Point}
-    */
-    getPoints(n=360) {
-        let step = 2*Math.PI/n;
-        let points = [];
-
-        for (let theta=0; theta < 2*Math.PI; theta+=step) {
-            points.push(new Point(this.X + this.radius*Math.cos(theta), this.Y - this.radius*Math.sin(theta)));
-        }
-
-        return points;
-    }
-    
-    /**
-    * Get Point at n degrees on this Circle
-    * @param {number} angle Angle in degrees
-    * @returns {Point}
-    */
-    getPoint(angle=0) {
-        return this.point.pointAtDegreesSteps(angle, this.radius);
-    }
-
-    /**
-    * Test if this Circle is inside another Circle
-    * @param {Circle} circle
-    * @returns {boolean}
-    */
-    isInside(circle) {
-        let distance = this.distanceTo(circle);
-        if (distance+this.Radius <= circle.Radius) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-    * Test if this Circle intersects with another Circle
-    * @param {Circle} circle
-    * @returns {boolean}
-    */
-    intersectsWith(circle) {
-        let distance = this.distanceTo(circle);
-        let radius_sum = this.Radius+circle.Radius;
-
-        if (radius_sum > distance) {
-            return true;
-        }
-
-        return false;
-    }
-    
-    /**
-    * Move this Circle
-    * @param {number} x
-    * @param {number} y
-    */
-    move(x, y) {
-        this.point.move(x, y);
-    }
-
-    toString() {
-        return `Circle(Point = ${this.Point}, Radius = ${this.Radius})`;
-    }
-}
-
 class Size3D {
     width = 0; height = 0; depth = 0;
 
@@ -547,159 +377,6 @@ class Point3D {
     }
 }
 
-class Cube {
-    point = null; size = null;
-
-    /**
-    * Create new Cube
-    * @param {Point3D} point
-    * @param {Size3D} size
-    */
-    constructor(point, size) {
-        this.point = point;
-        this.size = size;
-    }
-
-    get X() { return this.point.X; } set X(x) { this.point.X = x; }
-    get Y() { return this.point.Y; } set Y(y) { this.point.Y = y; }
-    get Z() { return this.point.Z; } set Z(z) { this.point.Z = z; }
-    get Width() { return this.size.Width; } set Width(width) { this.size.Width = width; }
-    get Height() { return this.size.Height; } set Height(height) { this.size.Height = height; }
-    get Depth() { return this.size.Depth; } set Depth(depth) { this.size.Depth = depth; }
-    get Point3D() { return this.point; } set Point3D(point) { this.point = point; }
-    get Size3D() { return this.size; } set Size3D(size) { this.size = size; }
-
-    /**
-    * Test if this Cube intersects with another Cube
-    * @param {Cube} cube
-    * @returns {boolean}
-    */
-    intersectsWith(cube) {
-        let a = this;
-        let b = cube;
-
-        if (((a.X >= b.X && a.X <= b.X+b.Width) || 
-            (b.X >= a.X && b.X <= a.X+a.Width)) &&
-            ((a.Y >= b.Y && a.Y <= b.Y+b.Height) || 
-            (b.Y >= a.Y && b.Y <= a.Y+a.Height)) &&
-            ((a.Z >= b.Z && a.Z <= b.Z+b.Depth) || 
-            (b.Z >= a.Z && b.Z <= a.Z+a.Depth))) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-    * Test if this Cube is inside another Cube
-    * @param {Cube} cube
-    * @returns {boolean}
-    */
-    isInside(cube) {
-        let a = this;
-        let b = cube;
-
-        if ((a.X > b.X && a.X+a.Width < b.X+b.Width) &&
-            (a.Y > b.Y && a.Y+a.Height < b.Y+b.Height) &&
-            (a.Z > b.Z && a.Z+a.Depth < b.Z+b.Depth)) {
-            return true;
-        }
-
-        return false;
-    }
-    
-    /**
-    * Move this Cube
-    * @param {number} x
-    * @param {number} y
-    * @param {number} z
-    */
-    move(x, y, z) {
-        this.point.move(x, y, z);
-    }
-
-    toString() {
-        return `Cube(Point3D = ${this.Point3D}, Size3D = ${this.Size3D})`;
-    }
-}
-
-class Sphere {
-    point = null; radius = 0;
-
-    /**
-    * Create new Sphere
-    * @param {Point} point
-    * @param {number} radius
-    */
-    constructor(point, radius=0) {
-        this.point = point;
-        this.radius = radius;
-    }
-
-    get X() { return this.point.X; } set X(x) { this.point.X = x; }
-    get Y() { return this.point.Y; } set Y(y) { this.point.Y = y; }
-    get Z() { return this.point.Z; } set Z(z) { this.point.Z = z; }
-    get Point3D() { return this.point; } set Point3D(point) { this.point = point; }
-    get Radius() { return this.radius; } set Radius(r) { this.radius = r; }
-
-    /**
-    * Get distance from this Sphere's center point to another Sphere's center point
-    * @param {Sphere} sphere
-    * @returns {number}
-    */
-    distanceTo(sphere) {
-        let a = this;
-        let b = sphere;
-
-        let distance = Math.sqrt(Math.pow(b.X-a.X, 2) + Math.pow(b.Y-a.Y, 2) + Math.pow(b.Z-a.Z, 2));
-        
-        return distance;
-    }
-
-    /**
-    * Test if this Sphere is inside another Sphere
-    * @param {Sphere} sphere
-    * @returns {boolean}
-    */
-    isInside(sphere) {
-        let distance = this.distanceTo(sphere);
-        if (distance+this.Radius <= sphere.Radius) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-    * Test if this Sphere intersects with another Sphere
-    * @param {Sphere} sphere
-    * @returns {boolean}
-    */
-    intersectsWith(sphere) {
-        let distance = this.distanceTo(sphere);
-        let radius_sum = this.Radius+sphere.Radius;
-
-        if (radius_sum > distance) {
-            return true;
-        }
-
-        return false;
-    }
-    
-    /**
-    * Move this Sphere
-    * @param {number} x
-    * @param {number} y
-    * @param {number} z
-    */
-    move(x, y, z) {
-        this.point.move(x, y, z);
-    }
-
-    toString() {
-        return `Sphere(Point3D = ${this.Point3D}, Radius = ${Math.round(this.Radius)})`;
-    }
-}
-
 class Line {
     point_a = null;
     point_b = null;
@@ -791,6 +468,8 @@ class Line {
         this.point_b.move(x, y);
     }
 
+    copy() { return new Line(this.point_a.copy(), this.point_b.copy()); }
+
     toString() {
         return `Line(A = ${this.A}, B = ${this.B}, length = ${Math.round(this.length())}, angle = ${Math.round(this.angle())})`;
     }
@@ -831,8 +510,341 @@ class Line3D {
         this.point_b.move(x, y, z);
     }
 
+    copy() { return new Line(this.point_a.copy(), this.point_b.copy()); }
+
     toString() {
         return `Line3D(A = ${this.A}, B = ${this.B}, length = ${Math.round(this.length())})`;
+    }
+}
+
+class Rectangle {
+    point = null; size = null;
+
+    /**
+    * Create new Rectangle
+    * @param {Point} point
+    * @param {Size} size
+    */
+    constructor(point, size) {
+        this.point = point;
+        this.size = size;
+    }
+
+    get X() { return this.point.X; } set X(x) { this.point.X = x; }
+    get Y() { return this.point.Y; } set Y(y) { this.point.Y = y; }
+    get Width() { return this.size.Width; } set Width(width) { this.size.Width = width; }
+    get Height() { return this.size.Height; } set Height(height) { this.size.Height = height; }
+    get Point() { return this.point; } set Point(point) { this.point = point; }
+    get Size() { return this.size; } set Size(size) { this.size = size; }
+
+    /**
+    * Test if this Rectangle intersects with another Rectangle
+    * @param {Rectangle} rect
+    * @returns {boolean}
+    */
+    intersectsWith(rect) {
+        let a = this;
+        let b = rect;
+
+        if (((a.X >= b.X && a.X <= b.X+b.Width) || 
+            (b.X >= a.X && b.X <= a.X+a.Width)) &&
+            ((a.Y >= b.Y && a.Y <= b.Y+b.Height) || 
+            (b.Y >= a.Y && b.Y <= a.Y+a.Height))) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+    * Test if this Rectangle is inside another Rectangle
+    * @param {Rectangle} rect
+    * @returns {boolean}
+    */
+    isInside(rect) {
+        let a = this;
+        let b = rect;
+
+        if ((a.Y >= b.Y && a.Y+a.Height <= b.Y+b.Height) &&
+            (a.X >= b.X && a.X+a.Width <= b.X+b.Width)) {
+            return true;
+        }
+
+        return false;
+    }
+    
+    /**
+    * Move this Rectangle
+    * @param {number} x
+    * @param {number} y
+    */
+    move(x, y) {
+        this.point.move(x, y);
+    }
+
+    copy() { return new Rectangle(this.point.copy(), this.size.copy()); }
+
+    toString() {
+        return `Rectangle(Point = ${this.Point}, Size = ${this.Size})`;
+    }
+}
+
+class Circle {
+    point = null; radius = 0;
+
+    /**
+    * Create new Circle
+    * @param {Point} point
+    * @param {number} radius
+    */
+    constructor(point, radius=0) {
+        this.point = point;
+        this.radius = radius;
+    }
+
+    get X() { return this.point.X; } set X(x) { this.point.X = x; }
+    get Y() { return this.point.Y; } set Y(y) { this.point.Y = y; }
+    get Point() { return this.point; } set Point(point) { this.point = point; }
+    get Radius() { return this.radius; } set Radius(r) { this.radius = r; }
+
+    /**
+    * Get distance from this Circle's center point to another Circle's center point
+    * @param {Circle} circle
+    * @returns {number}
+    */
+    distanceTo(circle) {
+        let a = this;
+        let b = circle;
+
+        let distance = Math.sqrt(Math.pow(b.X-a.X, 2) + Math.pow(b.Y-a.Y, 2));
+        
+        return distance;
+    }
+
+    /**
+    * Get n number of Points on this Circle
+    * @param {number} n Amount of Points to return
+    * @returns {...Point}
+    */
+    getPoints(n=360) {
+        let step = 2*Math.PI/n;
+        let points = [];
+
+        for (let theta=0; theta < 2*Math.PI; theta+=step) {
+            points.push(new Point(this.X + this.radius*Math.cos(theta), this.Y - this.radius*Math.sin(theta)));
+        }
+
+        return points;
+    }
+    
+    /**
+    * Get Point at n degrees on this Circle
+    * @param {number} angle Angle in degrees
+    * @returns {Point}
+    */
+    getPoint(angle=0) {
+        return this.point.pointAtDegreesSteps(angle, this.radius);
+    }
+
+    /**
+    * Test if this Circle is inside another Circle
+    * @param {Circle} circle
+    * @returns {boolean}
+    */
+    isInside(circle) {
+        let distance = this.distanceTo(circle);
+        if (distance+this.Radius <= circle.Radius) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+    * Test if this Circle intersects with another Circle
+    * @param {Circle} circle
+    * @returns {boolean}
+    */
+    intersectsWith(circle) {
+        let distance = this.distanceTo(circle);
+        let radius_sum = this.Radius+circle.Radius;
+
+        if (radius_sum > distance) {
+            return true;
+        }
+
+        return false;
+    }
+    
+    /**
+    * Move this Circle
+    * @param {number} x
+    * @param {number} y
+    */
+    move(x, y) {
+        this.point.move(x, y);
+    }
+
+    copy() { return new Circle(this.point.copy(), this.radius); }
+
+    toString() {
+        return `Circle(Point = ${this.Point}, Radius = ${this.Radius})`;
+    }
+}
+
+class Cube {
+    point = null; size = null;
+
+    /**
+    * Create new Cube
+    * @param {Point3D} point
+    * @param {Size3D} size
+    */
+    constructor(point, size) {
+        this.point = point;
+        this.size = size;
+    }
+
+    get X() { return this.point.X; } set X(x) { this.point.X = x; }
+    get Y() { return this.point.Y; } set Y(y) { this.point.Y = y; }
+    get Z() { return this.point.Z; } set Z(z) { this.point.Z = z; }
+    get Width() { return this.size.Width; } set Width(width) { this.size.Width = width; }
+    get Height() { return this.size.Height; } set Height(height) { this.size.Height = height; }
+    get Depth() { return this.size.Depth; } set Depth(depth) { this.size.Depth = depth; }
+    get Point3D() { return this.point; } set Point3D(point) { this.point = point; }
+    get Size3D() { return this.size; } set Size3D(size) { this.size = size; }
+
+    /**
+    * Test if this Cube intersects with another Cube
+    * @param {Cube} cube
+    * @returns {boolean}
+    */
+    intersectsWith(cube) {
+        let a = this;
+        let b = cube;
+
+        if (((a.X >= b.X && a.X <= b.X+b.Width) || 
+            (b.X >= a.X && b.X <= a.X+a.Width)) &&
+            ((a.Y >= b.Y && a.Y <= b.Y+b.Height) || 
+            (b.Y >= a.Y && b.Y <= a.Y+a.Height)) &&
+            ((a.Z >= b.Z && a.Z <= b.Z+b.Depth) || 
+            (b.Z >= a.Z && b.Z <= a.Z+a.Depth))) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+    * Test if this Cube is inside another Cube
+    * @param {Cube} cube
+    * @returns {boolean}
+    */
+    isInside(cube) {
+        let a = this;
+        let b = cube;
+
+        if ((a.X > b.X && a.X+a.Width < b.X+b.Width) &&
+            (a.Y > b.Y && a.Y+a.Height < b.Y+b.Height) &&
+            (a.Z > b.Z && a.Z+a.Depth < b.Z+b.Depth)) {
+            return true;
+        }
+
+        return false;
+    }
+    
+    /**
+    * Move this Cube
+    * @param {number} x
+    * @param {number} y
+    * @param {number} z
+    */
+    move(x, y, z) {
+        this.point.move(x, y, z);
+    }
+
+    copy() { return new Circle(this.point.copy(), this.size.copy()); }
+
+    toString() {
+        return `Cube(Point3D = ${this.Point3D}, Size3D = ${this.Size3D})`;
+    }
+}
+
+class Sphere {
+    point = null; radius = 0;
+
+    /**
+    * Create new Sphere
+    * @param {Point} point
+    * @param {number} radius
+    */
+    constructor(point, radius=0) {
+        this.point = point;
+        this.radius = radius;
+    }
+
+    get X() { return this.point.X; } set X(x) { this.point.X = x; }
+    get Y() { return this.point.Y; } set Y(y) { this.point.Y = y; }
+    get Z() { return this.point.Z; } set Z(z) { this.point.Z = z; }
+    get Point3D() { return this.point; } set Point3D(point) { this.point = point; }
+    get Radius() { return this.radius; } set Radius(r) { this.radius = r; }
+
+    /**
+    * Get distance from this Sphere's center point to another Sphere's center point
+    * @param {Sphere} sphere
+    * @returns {number}
+    */
+    distanceTo(sphere) {
+        let a = this;
+        let b = sphere;
+
+        let distance = Math.sqrt(Math.pow(b.X-a.X, 2) + Math.pow(b.Y-a.Y, 2) + Math.pow(b.Z-a.Z, 2));
+        
+        return distance;
+    }
+
+    /**
+    * Test if this Sphere is inside another Sphere
+    * @param {Sphere} sphere
+    * @returns {boolean}
+    */
+    isInside(sphere) {
+        let distance = this.distanceTo(sphere);
+        if (distance+this.Radius <= sphere.Radius) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+    * Test if this Sphere intersects with another Sphere
+    * @param {Sphere} sphere
+    * @returns {boolean}
+    */
+    intersectsWith(sphere) {
+        let distance = this.distanceTo(sphere);
+        let radius_sum = this.Radius+sphere.Radius;
+
+        if (radius_sum > distance) {
+            return true;
+        }
+
+        return false;
+    }
+    
+    /**
+    * Move this Sphere
+    * @param {number} x
+    * @param {number} y
+    * @param {number} z
+    */
+    move(x, y, z) {
+        this.point.move(x, y, z);
+    }
+
+    copy() { return new Circle(this.point.copy(), this.radius); }
+
+    toString() {
+        return `Sphere(Point3D = ${this.Point3D}, Radius = ${Math.round(this.Radius)})`;
     }
 }
 
@@ -935,6 +947,8 @@ class Polygon {
         }
     }
 
+    copy() { return new Polygon(...this.points.map(point => point.copy())); }
+
     toString() {
         const text = this.Points.map(p => p.toString()).join(', ');
         return `Polygon(Center = ${this.Center}, Points = [${text}])`;
@@ -985,10 +999,25 @@ class Polygon3D {
         }
     }
 
+    copy() { return new Polygon(...this.points.map(point => point.copy())); }
+
     toString() {
         const text = this.Points.map(p => p.toString()).join(', ');
         return `Polygon3D(Points = [${text}])`;
     }
 }
 
-if (typeof(module)!='undefined') module.exports = { Size, Point, Rectangle, Circle, Point3D, Size3D, Cube, Sphere, Line, Line3D, Polygon, Polygon3D };
+if (typeof(module)!='undefined') module.exports = { 
+    Size, 
+    Point, 
+    Rectangle, 
+    Circle, 
+    Point3D, 
+    Size3D, 
+    Cube, 
+    Sphere, 
+    Line, 
+    Line3D, 
+    Polygon, 
+    Polygon3D 
+}
