@@ -954,15 +954,21 @@ class Polygon {
      */
     intersectsWith(polygon) {
         if (polygon.points.length > 2 && this.points.length > 2) {
+            const c = new Line(this.points[0], this.points[this.points.length-1]);
+            const d = new Line(polygon.points[0], polygon.points[polygon.points.length-1]);
+
             for (let i=0; i<this.points.length-1; i++) {
                 const a = new Line(this.points[i], this.points[i+1]);
-    
+
                 for (let j=0; j<polygon.points.length-1; j++) {
                     const b = new Line(polygon.points[j], polygon.points[j+1]);
     
-                    if (a.intersectsWith(b))
+                    if (a.intersectsWith(b) || b.intersectsWith(c))
                         return true;
                 }
+
+                if (a.intersectsWith(d))
+                    return true;
             }
         }
 
