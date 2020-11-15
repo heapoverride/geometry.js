@@ -947,6 +947,46 @@ class Polygon {
         }
     }
 
+    /**
+     * Test if this Polygon intersects with another Polygon
+     * @param {Polygon} polygon
+     * @returns {boolean}
+     */
+    intersectsWith(polygon) {
+        if (polygon.points.length > 2 && this.points.length > 2) {
+            for (let i=0; i<this.points.length-1; i++) {
+                const a = new Line(this.points[i], this.points[i+1]);
+    
+                for (let j=0; j<polygon.points.length-1; j++) {
+                    const b = new Line(polygon.points[j], polygon.points[j+1]);
+    
+                    if (a.intersectsWith(b))
+                        return true;
+                }
+            }
+
+            const a = new Line(this.points[0], this.points[i+1]);
+            const b = new Line(polygon.points[j], polygon.points[j+1]);
+        }
+
+        return false;
+    }
+
+    /**
+     * Test if this Polygon is inside another Polygon
+     * @param {Polygon} polygon
+     * @returns {boolean}
+     */
+    isInside(polygon) {
+        if (!this.intersectsWith(polygon)) {
+            for (let i=0; i<this.points.length; i++) {
+                if (this.points[i].isInside(polygon))
+                    return true;
+            }
+        }
+        return false;
+    }
+
     copy() { return new Polygon(...this.points.map(point => point.copy())); }
 
     toString() {
