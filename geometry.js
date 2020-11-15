@@ -964,9 +964,6 @@ class Polygon {
                         return true;
                 }
             }
-
-            const a = new Line(this.points[0], this.points[i+1]);
-            const b = new Line(polygon.points[j], polygon.points[j+1]);
         }
 
         return false;
