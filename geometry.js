@@ -536,6 +536,7 @@ class Rectangle {
     get Height() { return this.size.Height; } set Height(height) { this.size.Height = height; }
     get Point() { return this.point; } set Point(point) { this.point = point; }
     get Size() { return this.size; } set Size(size) { this.size = size; }
+    get Center() { return new Point(this.point.X + (this.size.Width/2), this.point.Y + (this.size.Height/2)); }
 
     /**
     * Test if this Rectangle intersects with another Rectangle
@@ -712,6 +713,7 @@ class Cube {
     get Depth() { return this.size.Depth; } set Depth(depth) { this.size.Depth = depth; }
     get Point3D() { return this.point; } set Point3D(point) { this.point = point; }
     get Size3D() { return this.size; } set Size3D(size) { this.size = size; }
+    get Center() { return new Point3D(this.point.X + (this.size.Width/2), this.point.Y + (this.size.Height/2), this.point.Z + (this.size.Depth/2)); }
 
     /**
     * Test if this Cube intersects with another Cube
