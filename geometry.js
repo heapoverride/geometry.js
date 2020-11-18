@@ -928,6 +928,18 @@ class Polygon {
     }
 
     /**
+    * Load Polygon from 2D array of X and Y coordinates
+    * @param {String|Array} data 
+    * @return {Polygon}
+    */
+    load(array) {
+       if (typeof array == 'string') {
+           array = JSON.parse(array);
+       }
+       return new Polygon(...array.map(v => new Point(v[0], v[1])));
+    }
+
+    /**
     * Rotate this Polygon n degrees around central Point
     * @param {Point} point
     * @param {number} angle Angle in degrees
@@ -1031,6 +1043,18 @@ class Polygon3D {
         if (points!=null && points.length > 0) {
             this.points.push(...points);
         }
+    }
+
+    /**
+    * Load Polygon3D from 2D array of X and Y and Z coordinates
+    * @param {String|Array} data 
+    * @return {Polygon}
+    */
+    load(array) {
+        if (typeof array == 'string') {
+            array = JSON.parse(array);
+        }
+        return new Polygon3D(...array.map(v => new Point3D(v[0], v[1], v[2])));
     }
 
     /**
