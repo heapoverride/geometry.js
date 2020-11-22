@@ -1004,6 +1004,18 @@ class Polygon {
         return false;
     }
 
+    /**
+     * Get Rectangle that contains the entire Polygon
+     * @returns {Rectangle}
+     */
+    getBoundingRectangle() {
+        const low = new Point(Math.min.apply(null, this.points.map(p => p.X)), 
+            Math.min.apply(null, this.points.map(p => p.Y)));
+        const high = new Point(Math.max.apply(null, this.points.map(p => p.X)), 
+            Math.max.apply(null, this.points.map(p => p.Y)));
+        return new Rectangle(low, new Size(high.X - low.X, high.Y - low.Y));
+    }
+
     copy() { return new Polygon(...this.points.map(point => point.copy())); }
 
     toString() {
